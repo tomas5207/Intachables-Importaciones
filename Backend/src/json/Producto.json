@@ -1,0 +1,28 @@
+{
+    "producto": [
+        {
+            "nombre": "Biofresh",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710974296/Producto10_yjod9q.webp",
+            "descripción": "Comida para gatos marca Biofresh",
+            "codigo": "10024A",
+            "precio": 1500,
+            "stock": 20
+        },
+        {
+            "nombre": "Dog Chow",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710973642/Producto5_idisvh.webp",
+            "descripción": "Comida para perros marca Dog Chow",
+            "codigo": "10027B",
+            "precio": 1600,
+            "stock": 13
+        },
+        {
+            "nombre": "Hueso LCM",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710978530/Producto26_gcti54.webp",
+            "descripción": "Hueso de goma de caucho marca LCM",
+            "codigo": "10035C",
+            "precio": 300,
+            "stock": 35
+        }
+    ]
+}
