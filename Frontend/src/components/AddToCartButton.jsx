@@ -21,9 +21,9 @@ const AddToCartButton = ({ product, addToCart }) => {
 
   return (
     <div style={{ width: '100%', textAlign: 'center' }}>
-      <Button onClick={handleRemove} style={{ marginRight: '5px' }}>-</Button>
-      <span style={{ margin: '0 5px' }}>{countItem}</span>
-      <Button onClick={handleAdd} style={{ marginLeft: '5px' }}>+</Button>
+      <Button onClick={handleRemove} style={{ marginRight: '5px' , backgroundColor: "white", color: "black"}}>-</Button>
+      <span style={{ margin: '0 5px', color: 'white', fontWeight: 'bold'}}>{countItem}</span>
+      <Button onClick={handleAdd} style={{ marginLeft: '5px', backgroundColor: "white", color: "black" }}>+</Button>
       <Button 
         variant="success" 
         onClick={handleAddToCart} 

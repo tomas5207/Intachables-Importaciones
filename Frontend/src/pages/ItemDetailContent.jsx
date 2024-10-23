@@ -19,7 +19,7 @@ export const ItemDetailContent = ({ addToCart }) => {
   }, [id]);
 
   return (
-    <Card bg="primary" text="info" key={productsData.id} style={{ width: '19rem', height: "500px" }}>
+    <Card text="info" key={productsData.id} style={{ width: '19rem', height: "500px" , backgroundColor:"#fdcb5c"}}>
         <Card.Img variant="top" style={{ height: "250px", width: "250px", display: "block", margin: "0 auto", objectFit: "cover" }} src={productsData.imagen} />
         <Card.Body>
         <Card.Title style={{ color: "white" }}>{productsData.nombre}</Card.Title>

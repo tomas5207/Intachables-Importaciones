@@ -16,7 +16,7 @@ export const Home = ({addToCart}) => {
     
 
 return (
-    <ItemListContainer greeting="Bienvenido a la tienda de mascotas" productsData={productsData} addToCart={addToCart}/>
+    <ItemListContainer greeting="Intachables-Importaciones.com" productsData={productsData} addToCart={addToCart}/>
 )
 }
 

@@ -53,14 +53,14 @@ const Cart = ({ cartItems, removeFromCart }) => {
 
   // Renderiza el componente
   return (
-    <div style={{ textAlign: 'center', color: 'lightblue' }}>
+    <div style={{ textAlign: 'center', color: '#fdcb5c' }}>
       <h2>Carrito de Compras</h2>
       {cartItems.length === 0 ? (
         <p>No hay items en el carrito</p>
       ) : (
         <>
           {cartItems.map((item, index) => (
-            <Card key={index} bg="primary" text="info" style={{ margin: '10px' }}>
+            <Card key={index} text="info" style={{ margin: '10px', backgroundColor: '#fdcb5c'}}>
               <Card.Img
                 variant="top"
                 style={{ height: '150px', width: '150px', display: 'block', margin: '0 auto', objectFit: 'cover' }}
