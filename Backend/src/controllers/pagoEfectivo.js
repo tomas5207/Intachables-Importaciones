@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 const pagoEfectivo = async (req, res) => {
-  const { items, total } = req.body;
+  const { items, total, emailCliente } = req.body;
 
   try {
     // Crear el contenido del correo
@@ -14,7 +14,7 @@ const pagoEfectivo = async (req, res) => {
     const mensajeHTML = `
     <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
       <h2 style="color: #4CAF50;">Nueva compra realizada en efectivo</h2>
-      <p style="font-size: 16px;">Cliente: <strong>admin</strong></p>
+      <p style="font-size: 16px;">Mail del cliente: <strong>${emailCliente}</strong></p>
       <h3 style="color: #4CAF50;">Productos comprados:</h3>
       <ul style="font-size: 16px; line-height: 1.6;">
         ${productosHTML}
@@ -45,7 +45,7 @@ const pagoEfectivo = async (req, res) => {
     // Enviar el correo
     await transporter.sendMail({
       from: 'petpalacepf@gmail.com',
-      to: 'jorcintomas@gmail.com', // Correo del dueño de la tienda
+      to: 'jorcintomas@gmail.com',
       subject: 'Nueva compra en efectivo',
       html: mensajeHTML, // Usa `html` en lugar de `text` para enviar contenido HTML
     });

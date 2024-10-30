@@ -21,12 +21,12 @@ const pagoMercadoPago = async (req, res) => {
         id: item.id,
         title: item.nombre,
         quantity: item.quantity,
-        unit_price: item.precio,
+        unit_price: item.precio + (item.precio * 0.05),
       })),
       back_urls: {
-        success: "http://localhost:5173/home",
-        failure: "http://localhost:5173/home",
-        pending: "http://localhost:5173/home",
+        success: "http://localhost:5173",
+        failure: "http://localhost:5173",
+        pending: "http://localhost:5173",
       },
       auto_return: "approved"
     };

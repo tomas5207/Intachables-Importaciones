@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom'; // No más BrowserRouter aquí
 import Home from './pages/Home';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import Shop from './pages/Shop';
+import About from './pages/About';
 import ItemDetailContent from './pages/ItemDetailContent';
 import Cart from './pages/Cart';
 import './App.css';
@@ -29,12 +32,21 @@ function App() {
 
   return (
     <>
-      <NavBar /> {/* El NavBar siempre se renderiza ahora */}
+    <header>
+    <NavBar />
+    </header>
+      <main>
       <Routes>
         <Route path='/' element={<Home addToCart={addToCart} />} />
         <Route path='/producto/:id' element={<ItemDetailContent addToCart={addToCart} />} />
         <Route path='/cart' element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
+        <Route path='/shop' element={<Shop />} />
+        <Route path='/about' element={<About />} />
       </Routes>
+      </main>
+      <footer>
+      <Footer />
+      </footer>
     </>
   );
 }

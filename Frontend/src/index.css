@@ -6,11 +6,48 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Asegura que el root ocupe toda la altura de la pantalla */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 99vw;
+  position: relative;
+  bottom: 35px;
+  left: -153px; /* No se queda fijo al hacer scroll */
+}
+
+/* Configura el main para ocupar el espacio disponible */
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido del main */
+}
+
+/* Estilos adicionales para el footer */
+footer {
+  width: 99vw;
+  height: 15%; /* Ocupa todo el ancho de la pantalla */
+  text-align: center;
+  padding: 20px 0;
+  box-sizing: border-box; /* Para evitar problemas de padding */
+  position: relative;
+  bottom: -35px;
+  left: -153px;
 }
 
 a {
@@ -24,10 +61,9 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 150vh;
 }
 
 h1 {

@@ -2,11 +2,10 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import AddToCartButton from '../components/AddToCartButton'; // Asegúrate de ajustar la ruta según tu estructura
 
-const ItemListContainer = ({ greeting, productsData, addToCart }) => {
+const ItemListContainer = ({ productsData, addToCart }) => {
     return (
         <div style={{ fontWeight: "bold", textAlign: "center", color: "#fdcb5c" }}>
-            <div style={{ fontSize: "3rem", marginBottom: "20px" }}>{greeting}</div>
-            <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px" }}>
+            <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px" , marginBottom: "150px"}}>
                 {
                     productsData.map(product => {
                         return (
