@@ -1,14 +1,13 @@
-import PropTypes from 'prop-types'
+import ImageCarrusel from '../components/ImageCarrusel';
 import React, { Component } from 'react'
 
-export class About extends Component {
-  static propTypes = {}
+const About = () => {
+  
 
-  render() {
+
     return (
-      <div>About</div>
+      <ImageCarrusel PageRefrence="Sobre Nosotros" reference="Home/Sobre Nosotros"/>
     )
-  }
 }
 
 export default About

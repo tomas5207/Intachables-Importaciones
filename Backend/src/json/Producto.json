@@ -6,7 +6,9 @@
             "descripción": "Comida para gatos marca Biofresh",
             "codigo": "10024A",
             "precio": 1500,
-            "stock": 20
+            "stock": 20,
+            "favorito": true,
+            "categoria": "Comida"
         },
         {
             "nombre": "Dog Chow",
@@ -14,7 +16,9 @@
             "descripción": "Comida para perros marca Dog Chow",
             "codigo": "10027B",
             "precio": 1600,
-            "stock": 13
+            "stock": 13,
+            "favorito": true,
+            "categoria": "Comida"
         },
         {
             "nombre": "Hueso LCM",
@@ -22,7 +26,29 @@
             "descripción": "Hueso de goma de caucho marca LCM",
             "codigo": "10035C",
             "precio": 300,
-            "stock": 35
+            "stock": 35,
+            "favorito": true,
+            "categoria": "Juguetes"
+        },
+        {
+            "nombre": "Cama para mascotas pequeña",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710977161/Producto18_nv8xqp.webp",
+            "descripción": "Cama para perros y gatos pequeña",
+            "codigo": "10040D",
+            "precio": 600,
+            "stock": 10,
+            "favorito": false,
+            "categoria": "Cama"
+        },
+        {
+            "nombre": "Cama para mascotas mediana",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710977617/Producto19_q0e9yd.webp",
+            "descripción": "Cama para perros y gatos mediana",
+            "codigo": "10041E",
+            "precio": 850,
+            "stock": 10,
+            "favorito": false,
+            "categoria": "Cama"
         }
     ]
 }

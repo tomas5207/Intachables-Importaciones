@@ -5,6 +5,8 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Shop from './pages/Shop';
 import About from './pages/About';
+import Contact from './pages/Contact';
+import Pay from './pages/Pay';
 import ItemDetailContent from './pages/ItemDetailContent';
 import Cart from './pages/Cart';
 import './App.css';
@@ -42,6 +44,8 @@ function App() {
         <Route path='/cart' element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/payform' element={<Pay />} />
       </Routes>
       </main>
       <footer>

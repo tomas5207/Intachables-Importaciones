@@ -27,8 +27,10 @@ function NavBar () {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link style={{ color: 'white' }} href="/">Home</Nav.Link>
-                            <Nav.Link style={{ color: 'white' }} href="/shop">Shop</Nav.Link>
-                            <Nav.Link style={{ color: 'white' }} href="/about">About Us</Nav.Link>
+                            <Nav.Link style={{ color: 'white' }} href="/shop">Tienda</Nav.Link>
+                            <Nav.Link style={{ color: 'white' }} href="/about">Sobre Nosotros</Nav.Link>
+                            <Nav.Link style={{ color: 'white' }} href="/payform">Formas de Pago</Nav.Link>
+                            <Nav.Link style={{ color: 'white' }} href="/contact">Contacto</Nav.Link>
                         </Nav>
                         <Nav>
                             {isAuthenticated ? (

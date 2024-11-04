@@ -17,12 +17,19 @@ const pagoMercadoPago = async (req, res) => {
     // Step 3: Crear la preferencia
     const preferenceData = {
       purpose: "wallet_purchase", // Establece el propósito de la preferencia
-      items: ArrayItems.map(item => ({
-        id: item.id,
-        title: item.nombre,
-        quantity: item.quantity,
-        unit_price: item.precio + (item.precio * 0.05),
-      })),
+      items: ArrayItems.map(item => {
+        // Calcula el precio con el 5.99% de comisión más el IVA del 21% sobre esa comisión
+        const commission = item.precio * 0.0599;
+        const iva = commission * 0.22;
+        const adjustedPrice = item.precio + commission + iva;
+
+        return {
+          id: item.id,
+          title: item.nombre,
+          quantity: item.quantity,
+          unit_price: adjustedPrice,
+        };
+      }),
       back_urls: {
         success: "http://localhost:5173",
         failure: "http://localhost:5173",

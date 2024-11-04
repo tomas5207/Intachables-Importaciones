@@ -25,6 +25,12 @@ module.exports = (dataBase) => {
         stock:{
             type: DataTypes.INTEGER
         },
+        favorito:{
+            type: DataTypes.BOOLEAN
+        },
+        categoria: {
+            type: DataTypes.STRING
+        }
     }, {
         timestamps: false
     }); 
