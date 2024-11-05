@@ -1,12 +1,46 @@
 import ImageCarrusel from '../components/ImageCarrusel';
 import React, { Component } from 'react'
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Contact = () => {
   
   const {isAuthenticated , user} = useAuth0();
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    if (!name || !email || !message) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Complete todos los campos por favor!",
+      });
+      return;
+    }
+
+    emailjs.sendForm("service_iz70z1f", "template_85jzk9m",
+      e.target, "fa-DZWj3Ti3MRpGGh").then(()=>{
+        Swal.fire({
+        icon: "success",
+        title: "Mensaje recibido!",
+        text: "Gracias por contactarte con nosotros. Nos pondremos en contacto contigo lo antes posible.",
+      });
+      e.target.reset();
+    }).catch(()=>{
+      Swal.fire({
+        icon: "error",
+        title: "Lo siento :c",
+        text: "Hubo un error al procesar su solicitud. Por favor, intente nuevamente.",
+      });
+    })
+
+  }
 
     return (
       <>
@@ -25,7 +59,7 @@ const Contact = () => {
     }}
   >
     <h2 style={{ color: "white", marginBottom: "20px" }}>Contactame</h2>
-    <form id="contact-form" method="post">
+    <form id="contact-form" method="post" onSubmit={sendEmail}>
       <div className="form-group" style={{ marginBottom: "15px" }}>
         <label
           htmlFor="name"
@@ -136,7 +170,7 @@ const Contact = () => {
     }}
   >
     <h2 style={{ color: "white", marginBottom: "20px" }}>Contactame</h2>
-    <form id="contact-form" method="post">
+    <form id="contact-form" method="post" onSubmit={sendEmail}>
       <div className="form-group" style={{ marginBottom: "15px" }}>
         <label
           htmlFor="name"
