@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, HOST, PORT, DB_NAME } = process.env;
 const Product_Model = require('./models/Producto');
 const User_Model = require('./models/User');
+const Category_Model = require('./models/Categoria');
 
 const database = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${HOST}:${PORT}/${DB_NAME}`, {
     logging: false, native: false 
@@ -10,11 +11,14 @@ const database = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${HOST}:${P
 
 Product_Model(database);
 User_Model(database);
+Category_Model(database);
 
-const { Producto, User } = database.models;
+const { Producto, User, Categoria } = database.models;
 
-database.sync()
-    .then(() => console.log('Modelos sincronizados con la base de datos.'))
-    .catch(err => console.error('Error al sincronizar modelos:', err));
+Categoria.hasMany(Producto, { foreignKey: 'CategoriaId' });
+Producto.belongsTo(Categoria, { foreignKey: 'CategoriaId' });
 
-module.exports = { database, Producto, User };
+
+module.exports = { database, 
+    ...database.models,
+};

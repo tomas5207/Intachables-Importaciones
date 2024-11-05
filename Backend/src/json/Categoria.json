@@ -1,0 +1,13 @@
+{
+    "categoria": [
+        {
+            "nombre": "Comida"
+        },
+        {
+            "nombre": "Cama"
+        },
+        {
+            "nombre": "Juguetes"
+        }
+    ]
+}

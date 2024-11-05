@@ -1,4 +1,4 @@
-const { Producto } = require('../../db');
+const { Producto, Categoria } = require('../../db');
 const util = require('util');
 const fs = require('fs');
 
@@ -14,7 +14,12 @@ const getProductos = async (req, res) => {
         if (existingProduct === 0) {
             await Producto.bulkCreate(dbProductos);
         }
-        const productos = await Producto.findAll();
+        const productos = await Producto.findAll({
+            include: {
+                model: Categoria,
+                attributes: ['nombre']
+            }
+        });
         res.json(productos);
     } catch (error) {
         console.error('Error al procesar la solicitud:', error); 

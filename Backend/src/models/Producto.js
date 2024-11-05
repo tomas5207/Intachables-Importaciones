@@ -27,9 +27,6 @@ module.exports = (dataBase) => {
         },
         favorito:{
             type: DataTypes.BOOLEAN
-        },
-        categoria: {
-            type: DataTypes.STRING
         }
     }, {
         timestamps: false

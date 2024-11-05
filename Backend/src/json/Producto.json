@@ -8,7 +8,7 @@
             "precio": 1500,
             "stock": 20,
             "favorito": true,
-            "categoria": "Comida"
+            "CategoriaId": 1
         },
         {
             "nombre": "Dog Chow",
@@ -18,7 +18,7 @@
             "precio": 1600,
             "stock": 13,
             "favorito": true,
-            "categoria": "Comida"
+            "CategoriaId": 1 
         },
         {
             "nombre": "Hueso LCM",
@@ -28,7 +28,7 @@
             "precio": 300,
             "stock": 35,
             "favorito": true,
-            "categoria": "Juguetes"
+            "CategoriaId": 3
         },
         {
             "nombre": "Cama para mascotas pequeña",
@@ -38,7 +38,7 @@
             "precio": 600,
             "stock": 10,
             "favorito": false,
-            "categoria": "Cama"
+            "CategoriaId": 2
         },
         {
             "nombre": "Cama para mascotas mediana",
@@ -48,7 +48,7 @@
             "precio": 850,
             "stock": 10,
             "favorito": false,
-            "categoria": "Cama"
+            "CategoriaId": 2
         }
     ]
 }
