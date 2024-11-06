@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import ItemListContainer from '../components/ItemListContainer';
 import ImageCarrusel from '../components/ImageCarrusel';
 import CategoryFilter from '../components/CategoryFilter';
+import SearchBar from '../components/SearchBar'; // Importa el nuevo componente
 import axios from 'axios';
 
 export const Shop = ({ addToCart }) => {
     const [productsData, setProductsData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
 
     useEffect(() => {
         axios.get('http://localhost:5000/producto')
@@ -26,28 +28,37 @@ export const Shop = ({ addToCart }) => {
         setSelectedCategories((prevCategories) => {
             let updatedCategories;
             if (prevCategories.includes(category)) {
-                // Remover la categoría si ya está seleccionada
                 updatedCategories = prevCategories.filter(cat => cat !== category);
             } else {
-                // Agregar la categoría si no está seleccionada
                 updatedCategories = [...prevCategories, category];
             }
-
             return updatedCategories;
         });
     };
-    
+
+    const handleSearch = (term) => {
+        setSearchTerm(term); // Actualizar el término de búsqueda desde SearchBar
+    };
+
     useEffect(() => {
-        if (selectedCategories.length === 0) {
-            setFilteredData(productsData);
-        } else {
-            const filteredProducts = productsData.filter(
+        let filteredProducts = productsData;
+
+        // Filtrar productos según las categorías seleccionadas
+        if (selectedCategories.length > 0) {
+            filteredProducts = filteredProducts.filter(
                 product => product.Categorium && selectedCategories.includes(product.Categorium.nombre)
             );
-            setFilteredData(filteredProducts);
         }
-    }, [selectedCategories, productsData]);
-    
+
+        // Filtrar productos según el término de búsqueda
+        if (searchTerm) {
+            filteredProducts = filteredProducts.filter(
+                product => product.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+
+        setFilteredData(filteredProducts);
+    }, [selectedCategories, searchTerm, productsData]);
 
     const removeCategory = (category) => {
         setSelectedCategories(prevCategories =>
@@ -55,9 +66,11 @@ export const Shop = ({ addToCart }) => {
         );
     };
 
+
     return (
         <>
             <ImageCarrusel PageRefrence="Tienda" reference="Home/Tienda" />
+            <SearchBar onSearch={handleSearch} />
             <div className="selected-categories">
                     {selectedCategories.map(category => (
                         <span key={category} className="category-tag">
@@ -67,7 +80,13 @@ export const Shop = ({ addToCart }) => {
                 </div>
             <div className="shop-container">
                 <CategoryFilter onFilterSelect={handleFilterSelect} />
-                <ItemListContainer greeting="" productsData={filteredData} addToCart={addToCart} />
+                {filteredData.length === 0 ? (
+                    <div className="no-products-message">
+                        <p>Oops... no hay productos en la tienda</p>
+                    </div>
+                ) : (
+                    <ItemListContainer greeting="" productsData={filteredData} addToCart={addToCart} />
+                )}
             </div>
         </>
     );

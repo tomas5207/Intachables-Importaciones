@@ -127,7 +127,7 @@ button:focus-visible {
 }
 
 .category-item:hover {
-  background-color: #e2e6ea; /* Color de fondo al pasar el ratón */
+  background-color: #007bff8d; /* Color de fondo al pasar el ratón */
 }
 
 .selected-categories {
@@ -153,6 +153,13 @@ button:focus-visible {
   border: none; /* Sin borde para el botón */
   color: white; /* Color del botón */
   cursor: pointer; /* Cambia el cursor a pointer */
+}
+
+.search-input {
+  width: 350px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;
 }
 
 
