@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import { useAuth0 } from '@auth0/auth0-react';  // Importar el hook de Auth0
+import Button from 'react-bootstrap/Button';  
+import Card from 'react-bootstrap/Card';
 import Swal from 'sweetalert2';
 
-const AddToCartButton = ({ product, addToCart }) => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();  // Obtener la autenticación de Auth0
-  const [countItem, setCountItem] = useState(1); // Empezar con 1 para que el usuario pueda agregar al menos un artículo.
+const AddToCartButton = ({ product, addToCart }) => { 
+  const [countItem, setCountItem] = useState(1); 
 
   const handleAdd = () => {
     setCountItem(countItem + 1);
@@ -18,8 +17,8 @@ const AddToCartButton = ({ product, addToCart }) => {
   };
 
   const handleAddToCart = () => {
-    if (isAuthenticated) {
-      addToCart({ ...product, quantity: countItem }); // Añadir al carrito con la cantidad seleccionada.
+    
+      addToCart({ ...product, quantity: countItem }); 
       setCountItem(1); 
       if(countItem === 1){
         Swal.fire({
@@ -37,31 +36,19 @@ const AddToCartButton = ({ product, addToCart }) => {
           confirmButtonText: 'Cerrar'
         });
       }
-    } else {
-      Swal.fire({
-        title: 'No estás logeado',
-        text: 'Por favor, inicia sesión para añadir productos al carrito.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Iniciar sesión',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          loginWithRedirect();  // Redirigir al login si el usuario no está autenticado.
-        }
-      });
-    }
-  };
+    } 
 
   return (
     <div style={{ width: '100%', textAlign: 'center' }}>
-      <Button onClick={handleRemove} style={{ marginRight: '5px', backgroundColor: 'white', color: 'black' }}>-</Button>
-      <span style={{ margin: '0 5px', color: 'white', fontWeight: 'bold' }}>{countItem}</span>
-      <Button onClick={handleAdd} style={{ marginLeft: '5px', backgroundColor: 'white', color: 'black' }}>+</Button>
+      <Card style={{ backgroundColor: 'white', padding: '5px', display: 'inline-block'}}>
+      <Button onClick={handleRemove} style={{  backgroundColor: 'white', color: 'darkgrey' , width: '1px' ,border: 'none' }}>-</Button>
+      <span style={{ paddingLeft: '5px', color: 'black', fontWeight: 'bold' }}>{countItem}</span>
+      <Button onClick={handleAdd} style={{ backgroundColor: 'white', color: 'darkgrey', width: '1px' , border: 'none' }}>+</Button>
+      </Card>
       <Button 
         variant="success" 
         onClick={handleAddToCart} 
-        style={{ backgroundColor: 'white', color: 'black', fontWeight: 'bold', marginTop: '10px' }}
+        style={{ fontWeight: 'bold', marginLeft: '10px' }}
       >
         Añadir al carrito
       </Button>

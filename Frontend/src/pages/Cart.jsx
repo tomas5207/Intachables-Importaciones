@@ -10,7 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 const Cart = ({ cartItems, removeFromCart }) => {
   const navigate = useNavigate(); 
   const [preferenceId, setPreferenceId] = useState(null);// Inicializa el hook de navegación
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     // Inicializa Mercado Pago con tu public key
@@ -67,18 +67,22 @@ const Cart = ({ cartItems, removeFromCart }) => {
       }
     } else {
       Swal.fire({
-        title: 'No estás autenticado',
-        text: 'Por favor, inicia sesión para completar el pago en efectivo.',
+        title: 'No estás logueado',
+        text: 'Por favor, inicia sesión para poder hacer el pago en efectivo.',
         icon: 'warning',
         confirmButtonText: 'Iniciar sesión'
-      });
+      }).then((result) => {
+        if (result.isConfirmed) {
+          loginWithRedirect();  // Redirigir al login si el usuario no está autenticado.
+        }
+      });;
     }
   };
 
 
   // Renderiza el componente
   return (
-    <div style={{ textAlign: 'center', color: '#fdcb5c' }}>
+    <div style={{ textAlign: 'center', color: 'skyblue' }}>
       {cartItems.length === 0 ? (
         <p>No hay items en el carrito</p>
       ) : (
@@ -93,7 +97,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
             }}
           >
             {cartItems.map((item, index) => (
-              <Card key={index} text="info" style={{ margin: '10px', backgroundColor: '#fdcb5c' }}>
+              <Card key={index} text="info" style={{ margin: '10px', backgroundColor: 'skyblue' }}>
                 <Card.Img
                   variant="top"
                   style={{

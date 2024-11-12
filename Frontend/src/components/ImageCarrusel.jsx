@@ -11,8 +11,8 @@ const ImageCarrusel =({PageRefrence, reference}) => {
               style={{ height: '400px' }}
             />
             <Carousel.Caption>
-            <h1 style={{ color: '#fdcb5c', position: 'relative', bottom: '120px'}}>{PageRefrence}</h1>
-            <strong><span style={{ color: '#fdcb5c', fontSize: '25px', position: 'relative', bottom: '10px'}}>{reference}</span></strong>
+            <h1 style={{ color: 'skyblue', position: 'relative', bottom: '120px'}}>{PageRefrence}</h1>
+            <strong><span style={{ color: 'skyblue', fontSize: '25px', position: 'relative', bottom: '10px'}}>{reference}</span></strong>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -23,8 +23,8 @@ const ImageCarrusel =({PageRefrence, reference}) => {
               style={{ height: '400px'}}
             />
             <Carousel.Caption>
-            <h1 style={{ color: '#fdcb5c', position: 'relative', bottom: '120px'}}>{PageRefrence}</h1>
-            <strong><span style={{ color: '#fdcb5c', fontSize: '25px', position: 'relative', bottom: '10px'}}>{reference}</span></strong>
+            <h1 style={{ color: 'skyblue', position: 'relative', bottom: '120px'}}>{PageRefrence}</h1>
+            <strong><span style={{ color: 'skyblue', fontSize: '25px', position: 'relative', bottom: '10px'}}>{reference}</span></strong>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -35,8 +35,8 @@ const ImageCarrusel =({PageRefrence, reference}) => {
               style={{ height: '400px'}}
             />
             <Carousel.Caption>
-            <h1 style={{ color: '#fdcb5c' , position: 'relative', bottom: '120px'}}>{PageRefrence}</h1>
-            <strong><span style={{ color: '#fdcb5c', fontSize: '25px', position: 'relative', bottom: '10px'}}>{reference}</span></strong>
+            <h1 style={{ color: 'skyblue' , position: 'relative', bottom: '120px'}}>{PageRefrence}</h1>
+            <strong><span style={{ color: 'skyblue', fontSize: '25px', position: 'relative', bottom: '10px'}}>{reference}</span></strong>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

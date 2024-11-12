@@ -12,7 +12,7 @@ function NavBar () {
 
     return (
         <>
-            <Navbar expand="lg" style={{ backgroundColor: '#fdcb5c' }}>
+            <Navbar expand="lg" style={{ backgroundColor: 'Skyblue' }}>
                 <Container fluid>
                     <Navbar.Brand href="/">
                         <img

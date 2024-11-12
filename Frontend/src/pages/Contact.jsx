@@ -54,7 +54,7 @@ const Contact = () => {
       margin: "auto",
       padding: "20px",
       borderRadius: "10px",
-      backgroundColor: "#fdcb5c",
+      backgroundColor: "skyblue",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >
@@ -165,7 +165,7 @@ const Contact = () => {
       margin: "auto",
       padding: "20px",
       borderRadius: "10px",
-      backgroundColor: "#fdcb5c",
+      backgroundColor: "skyblue",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >

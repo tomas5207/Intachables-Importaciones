@@ -8,7 +8,7 @@ const Pay = () => {
     return (
       <>
       <ImageCarrusel PageRefrence="Formas de Pago" reference="Home/Formas de Pago"/>
-      <p style={{ fontSize: "20px" , textAlign: "justify", color: "#fdcb5c", marginTop: "20px"}}>
+      <p style={{ fontSize: "20px" , textAlign: "justify", color: "skyblue", marginTop: "20px"}}>
       <img 
           src="../../public/Tarjeta.png" 
           alt="Imagen tarjeta" 
@@ -19,7 +19,7 @@ const Pay = () => {
         dichos requisitos, podra ingresando al carrito de compras realizar la compra ya sea por mercado pago o 
         por efectivo.
       </p>
-      <p style={{ fontSize: "20px" , textAlign: "justify", color: "#fdcb5c", marginTop: "20px"}}>
+      <p style={{ fontSize: "20px" , textAlign: "justify", color: "skyblue", marginTop: "20px"}}>
       <img 
           src="../../public/mercadoPago.png" 
           alt="Imagen tarjeta" 
@@ -32,7 +32,7 @@ const Pay = () => {
         le cobrara el total más una comisión de 5.99% + IVA, es decir un 5.99% más el 22% de de ese 5.99%.
       </p>
       <br/>
-      <p style={{ fontSize: "20px" , textAlign: "justify", color: "#fdcb5c", marginTop: "20px"}}>
+      <p style={{ fontSize: "20px" , textAlign: "justify", color: "skyblue", marginTop: "20px"}}>
       <img 
           src="../../public/efectivo.png" 
           alt="Imagen tarjeta" 

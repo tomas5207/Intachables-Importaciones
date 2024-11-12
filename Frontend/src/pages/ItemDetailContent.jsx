@@ -19,16 +19,17 @@ export const ItemDetailContent = ({ addToCart }) => {
   }, [id]);
 
   return (
-    <Card text="info" key={productsData.id} style={{ width: '19rem', height: "500px" , backgroundColor:"#fdcb5c"}}>
-        <Card.Img variant="top" style={{ height: "250px", width: "250px", display: "block", margin: "0 auto", objectFit: "cover" }} src={productsData.imagen} />
-        <Card.Body>
-        <Card.Title style={{ color: "white" }}>{productsData.nombre}</Card.Title>
-        <div style={{ color: "white", fontSize: "15px" }}>{productsData.descripcion}</div>
-        <div style={{ color: "white" }}><strong>Cantidad en venta:</strong> {productsData.stock}</div>
-        <div style={{ color: "white" }}>$ {productsData.precio}</div>
-        <AddToCartButton product={productsData} addToCart={addToCart} /> 
+    <Card key={productsData.id} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "22rem", height: "600px" ,backgroundColor:"transparent"}}>
+    <Card text="info" style={{ width: '19rem', height: "550px", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor:"white", position: "relative", bottom: "8.5px"}}>
+        <Card.Img variant="top" style={{ height: "300px", width: "250px", objectFit: "contain" }} src={productsData.imagen} />
+        <Card.Body style={{ textAlign: "center" }}>
+            <Card.Title style={{ color: "black" }}>{productsData.nombre}</Card.Title>
+            <div style={{ color: "black" }}><strong>Cantidad en venta:</strong> {productsData.stock}</div>
+            <div style={{ color: "black" }}>$ {productsData.precio}</div>
         </Card.Body>
     </Card>
+    <AddToCartButton product={productsData} addToCart={addToCart} />
+</Card>
   );
 };
 
