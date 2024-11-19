@@ -4,7 +4,7 @@ import AddToCartButton from '../components/AddToCartButton'; // Asegúrate de aj
 
 const ItemListContainer = ({ greeting, productsData, addToCart }) => {
     return (
-        <div style={{ fontWeight: "bold", textAlign: "center", color: "skyblue" }}>
+        <div style={{ fontWeight: "bold", textAlign: "center", color: "#11456e" }}>
             <div style={{fontSize: "3rem"}}>{greeting}</div>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px" , marginBottom: "150px"}}>
                 {
@@ -19,6 +19,7 @@ const ItemListContainer = ({ greeting, productsData, addToCart }) => {
                                     <Card.Title style={{ color: "black" }}>{product.nombre}</Card.Title>
                                     <div style={{ color: "black" }}><strong>Cantidad en venta:</strong> {product.stock}</div>
                                     <div style={{ color: "black" }}>$ {product.precio}</div>
+                                    <div style={{ color: "black" }}>#{product.codigo}</div>
                                 </Card.Body>
                             </Card>
                             <AddToCartButton product={product} addToCart={addToCart} />

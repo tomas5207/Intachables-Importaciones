@@ -40,7 +40,7 @@ const AddToCartButton = ({ product, addToCart }) => {
 
   return (
     <div style={{ width: '100%', textAlign: 'center' }}>
-      <Card style={{ backgroundColor: 'white', padding: '5px', display: 'inline-block'}}>
+      <Card style={{ backgroundColor: 'white', padding: '5px', display: 'inline-block'}} className="stockButton">
       <Button onClick={handleRemove} style={{  backgroundColor: 'white', color: 'darkgrey' , width: '1px' ,border: 'none' }}>-</Button>
       <span style={{ paddingLeft: '5px', color: 'black', fontWeight: 'bold' }}>{countItem}</span>
       <Button onClick={handleAdd} style={{ backgroundColor: 'white', color: 'darkgrey', width: '1px' , border: 'none' }}>+</Button>
@@ -49,6 +49,7 @@ const AddToCartButton = ({ product, addToCart }) => {
         variant="success" 
         onClick={handleAddToCart} 
         style={{ fontWeight: 'bold', marginLeft: '10px' }}
+        className="addButton"
       >
         Añadir al carrito
       </Button>

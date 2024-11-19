@@ -97,6 +97,32 @@ button:focus-visible {
 
 /* styles.css o el archivo CSS correspondiente */
 
+.dog-card{
+  background: rgb(0,101,136);
+  background: linear-gradient(140deg, rgba(0,101,136,1) 50%, rgba(17,69,110,1) 70%);
+}
+
+.cat-card{
+  background: rgb(17,69,110);
+  background: linear-gradient(140deg, rgba(17,69,110,1) 50%, rgba(0,101,136,1) 70%);
+}
+
+.customButtonDetail .stockButton{
+  position: relative;
+  right: 155px;
+  bottom: 15px;
+}
+
+.customButtonDetail .addButton{
+  position: relative;
+  right: 125px;
+  bottom: 15px;
+}
+
+.payBanner{
+  background: rgb(25,135,84);
+  background: linear-gradient(90deg, rgba(25,135,84,1) 50%, rgba(0,158,227,1) 50%);
+}
 
 .shop-container {
   display: flex; /* Alineación en fila para escritorio */ /* Permite que los elementos se ajusten en pantallas pequeñas */
@@ -105,7 +131,7 @@ button:focus-visible {
 .category-filter {
   width: 350px; /* Ancho fijo para escritorio */
   padding: 10px; /* Espaciado interno */
-  background-color: skyblue; /* Color de fondo */
+  background-color: #11456e; /* Color de fondo */
   border-right: 1px solid #ccc; /* Línea divisoria */
   position: sticky; /* Mantiene el filtro fijo en la parte superior */
   top: 0; /* Lo mantiene pegado a la parte superior */

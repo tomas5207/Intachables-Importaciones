@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <Card.Footer
   style={{
-    backgroundColor: 'skyblue',
+    backgroundColor: '#11456e',
     backgroundImage: 'url("https://www.increibles.com.uy/wp-content/uploads/2023/07/pie-2.png")',
     backgroundSize: 'cover',       // Asegura que la imagen cubra todo el área del footer
     backgroundPosition: 'center',   // Centra la imagen en el footer

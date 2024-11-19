@@ -50,11 +50,11 @@ const Contact = () => {
     align="center"
     className="contact-form-container"
     style={{
-      maxWidth: "500px",
+      width: "400px",
       margin: "auto",
       padding: "20px",
       borderRadius: "10px",
-      backgroundColor: "skyblue",
+      backgroundColor: "#061c30",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >
@@ -161,11 +161,11 @@ const Contact = () => {
     align="center"
     className="contact-form-container"
     style={{
-      maxWidth: "500px",
+      width: "400px",
       margin: "auto",
       padding: "20px",
       borderRadius: "10px",
-      backgroundColor: "skyblue",
+      backgroundColor: "#061c30",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >

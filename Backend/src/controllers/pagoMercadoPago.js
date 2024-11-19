@@ -18,10 +18,16 @@ const pagoMercadoPago = async (req, res) => {
     const preferenceData = {
       purpose: "wallet_purchase", // Establece el propósito de la preferencia
       items: ArrayItems.map(item => {
-        // Calcula el precio con el 5.99% de comisión más el IVA del 21% sobre esa comisión
-        const commission = item.precio * 0.0599;
-        const iva = commission * 0.22;
-        const adjustedPrice = item.precio + commission + iva;
+        // Calcula la primera comisión (5.99%) y su IVA (21%)
+        const commission1 = item.precio * 0.0599;
+        const iva1 = commission1 * 0.22;
+
+        // Calcula la segunda comisión (2.49%) y su IVA (21%)
+        const commission2 = item.precio * 0.0249;
+        const iva2 = commission2 * 0.22;
+
+        // Precio ajustado final sumando el precio base, ambas comisiones y sus IVA
+        const adjustedPrice = item.precio + commission1 + iva1 + commission2 + iva2;
 
         return {
           id: item.id,

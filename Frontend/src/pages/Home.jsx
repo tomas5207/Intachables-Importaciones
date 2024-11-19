@@ -23,7 +23,7 @@ export const Home = ({ addToCart }) => {
         <>
         <ImageCarrusel PageRefrence="Home" reference=""/>
         <ItemListContainer greeting="Productos destacados de la semana:" productsData={productsData} addToCart={addToCart}/>
-        <Card style={{ backgroundColor: "skyblue", color: "white", width: "100%", padding: "20px", overflow: "hidden" }}>
+        <Card style={{ color: "white", width: "100%", padding: "20px", overflow: "hidden" }} className='cat-card'>
     <p style={{ fontSize: "20px", textAlign: "justify"}}>
         <img 
           src="../../public/gato.jpg" 
@@ -42,7 +42,7 @@ export const Home = ({ addToCart }) => {
       </Card>
       <br />
       <br />
-      <Card style={{ backgroundColor: "skyblue", color: "white", width: "100%"}}>
+      <Card style={{ color: "white", width: "100%"}} className='dog-card'>
         <p style={{ fontSize: "20px" , textAlign: "justify"}}>
         Para más información puedes visitar las secciones <strong> "Sobre Nosotros" </strong> y <strong> "Formas de Pago" </strong>
         donde podras obtener mas informacion sobre nosotros y el como pagar por los productos a nuestro disposición. También en caso 

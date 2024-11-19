@@ -16,6 +16,9 @@ module.exports = (dataBase) => {
         descripción: {
             type: DataTypes.TEXT
         },
+        color:{
+            type: DataTypes.STRING
+        },
         codigo: {
             type: DataTypes.STRING
         },

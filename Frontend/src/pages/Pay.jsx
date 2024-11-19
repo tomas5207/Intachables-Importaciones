@@ -8,7 +8,7 @@ const Pay = () => {
     return (
       <>
       <ImageCarrusel PageRefrence="Formas de Pago" reference="Home/Formas de Pago"/>
-      <p style={{ fontSize: "20px" , textAlign: "justify", color: "skyblue", marginTop: "20px"}}>
+      <p style={{ fontSize: "20px" , textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       <img 
           src="../../public/Tarjeta.png" 
           alt="Imagen tarjeta" 
@@ -19,20 +19,21 @@ const Pay = () => {
         dichos requisitos, podra ingresando al carrito de compras realizar la compra ya sea por mercado pago o 
         por efectivo.
       </p>
-      <p style={{ fontSize: "20px" , textAlign: "justify", color: "skyblue", marginTop: "20px"}}>
+      <p style={{ fontSize: "20px" , textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       <img 
           src="../../public/mercadoPago.png" 
           alt="Imagen tarjeta" 
-          style={{ width: "20%", height: "180px", float: "right", marginRight: "15px", position: "relative", bottom: "25px", left: "12px"}}
+          style={{ width: "20%", height: "185px", float: "right", marginRight: "15px", position: "relative", bottom: "20px", left: "12px"}}
         />
         Al realizar una compra con mercado pago usted tiene la libertad de decidir de que manera pagar según las configuraciones de 
         pago que usted maneje en su cuenta de mercado pago. Estas pueden ser tarjetas de crédito, tarjetas de debito, dinero almacenado
         en su cuenta de mercado pago, etc. Al clickear al boton para pagar con mercado pago desde nuestra página web esta lo redigira a 
         un formulario donde usted decidira que medio de pago útilizar. Eso si, tenga en cuenta que si decide pagar vía mercado pago se 
-        le cobrara el total más una comisión de 5.99% + IVA, es decir un 5.99% más el 22% de de ese 5.99%.
+        le cobrara el total más dos comisiónes, la primera de 5.99% + IVA, es decir un 5.99% más el 22% de de ese 5.99%, y la segunda de 
+        2.49% + IVA, es decir un 2.49% mas el 22% de de ese 2.49%.
       </p>
       <br/>
-      <p style={{ fontSize: "20px" , textAlign: "justify", color: "skyblue", marginTop: "20px"}}>
+      <p style={{ fontSize: "20px" , textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       <img 
           src="../../public/efectivo.png" 
           alt="Imagen tarjeta" 
