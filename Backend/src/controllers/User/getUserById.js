@@ -6,8 +6,7 @@ const readFile = util.promisify(fs.readFile);
 
 const getUserById = async (req, res) => {
     const { id } = req.params;
-    try {
-        console.log('Modelo Tornillo:', User); // Log para verificar el modelo
+    try { 
         const dbUser = await readFile('src/json/User.json', 'utf-8');
         const dbUserJson = JSON.parse(dbUser);
         const dbUsers = dbUserJson.user; 

@@ -2,7 +2,7 @@ const { MercadoPagoConfig, Preference } = require('mercadopago');
 
 // Step 1: Inicializa el cliente de Mercado Pago
 const mercadoPago = new MercadoPagoConfig({
-  accessToken: 'APP_USR-1486276486951821-101716-ebcc01234e577e8e150135e8d7496d20-2041072983',
+  accessToken: 'APP_USR-4909339683798058-112516-bd5c23dce5975b0c25ce16018bc33b94-2118847692',
   sandbox: true // Reemplaza con tu token real
 });
 
@@ -15,8 +15,7 @@ const pagoMercadoPago = async (req, res) => {
 
   try {
     // Step 3: Crear la preferencia
-    const preferenceData = {
-      purpose: "wallet_purchase", // Establece el propósito de la preferencia
+    const preferenceData = { // Establece el propósito de la preferencia
       items: ArrayItems.map(item => {
         // Calcula la primera comisión (5.99%) y su IVA (21%)
         const commission1 = item.precio * 0.0599;
@@ -37,7 +36,7 @@ const pagoMercadoPago = async (req, res) => {
         };
       }),
       back_urls: {
-        success: "http://localhost:5173",
+        success: "http://localhost:5173/paymentSuccess",
         failure: "http://localhost:5173",
         pending: "http://localhost:5173",
       },

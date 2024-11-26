@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Pay from './pages/Pay';
 import ItemDetailContent from './pages/ItemDetailContent';
 import Cart from './pages/Cart';
+import PurchaseComplete from './pages/PurchaseComplete';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -50,11 +51,15 @@ function App() {
         <Routes>
           <Route path='/' element={<Home addToCart={addToCart} />} />
           <Route path='/producto/:id' element={<ItemDetailContent addToCart={addToCart} />} />
-          <Route path='/cart' element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
-          <Route path='/shop' element={<Shop />} />
+          <Route path='/cart' element={<Cart cartItems={cart} removeFromCart={removeFromCart} setCart={setCart} />} />
+          <Route path='/shop' element={<Shop addToCart={addToCart} />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/payform' element={<Pay />} />
+          <Route
+          path="/paymentSuccess"
+          element={<PurchaseComplete setCart={setCart} cartItems={cart} />}
+        />
         </Routes>
       </main>
       <footer>

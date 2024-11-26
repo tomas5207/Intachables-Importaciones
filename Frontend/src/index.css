@@ -153,6 +153,34 @@ button:focus-visible {
   background-color: #007bff8d; /* Color de fondo al pasar el ratón */
 }
 
+.category-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.expand-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.subcategory-list {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.subcategory-item {
+    cursor: pointer;
+    margin-bottom: 0.3rem;
+}
+
+.subcategory-item:hover {
+    color: #3f3f3f;
+}
+
 .selected-categories {
   margin-top: 10px; /* Espacio superior para las categorías seleccionadas */
   display: flex; /* Para alinear las etiquetas en línea */
@@ -160,22 +188,25 @@ button:focus-visible {
   height: 80px; /* Para que las etiquetas se ajusten al contenedor */
 }
 
-.category-tag {
+.filter-tag {
   position: relative;
   background-color: #007bff; /* Color de fondo para las etiquetas */
   color: white; /* Color del texto */
   padding: 5px 10px; /* Espaciado interno */
   margin-right: 5px;
-  height: 50px;
   border-radius: 5px; /* Bordes redondeados */
 }
 
-.category-tag button {
+.filter-tag button {
   margin-left: 5px; /* Espacio entre el nombre de la categoría y el botón */
   background: none; /* Sin fondo para el botón */
   border: none; /* Sin borde para el botón */
   color: white; /* Color del botón */
   cursor: pointer; /* Cambia el cursor a pointer */
+}
+
+.search-bar{
+  height: 100px;
 }
 
 .search-input {

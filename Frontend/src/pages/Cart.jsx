@@ -7,14 +7,14 @@ import axios from 'axios';
 import Swal from 'sweetalert2'; 
 import { useAuth0 } from '@auth0/auth0-react';
 
-const Cart = ({ cartItems, removeFromCart }) => {
+const Cart = ({ cartItems, removeFromCart, setCart}) => {
   const navigate = useNavigate(); 
   const [preferenceId, setPreferenceId] = useState(null);// Inicializa el hook de navegación
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     // Inicializa Mercado Pago con tu public key
-    initMercadoPago('APP_USR-a8822305-0ee5-4564-93fc-1ee10adddb58');
+    initMercadoPago('APP_USR-08bc1ba8-ee93-4c2c-8405-cf9efc415eea');
 
     // Solicita el preferenceId al backend usando axios
     const createPreference = async () => {
@@ -55,6 +55,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
           confirmButtonText: 'Cerrar'
         });
 
+        setCart([]);
         navigate('/');
       } catch (error) {
         console.error('Error en el pago en efectivo:', error);
@@ -82,7 +83,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
 
   // Renderiza el componente
   return (
-    <div style={{ textAlign: 'center', color: 'skyblue' }}>
+    <div style={{ textAlign: 'center', color: '#11456e' }}>
       {cartItems.length === 0 ? (
         <p>No hay items en el carrito</p>
       ) : (
@@ -97,7 +98,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
             }}
           >
             {cartItems.map((item, index) => (
-              <Card key={index} text="info" style={{ margin: '10px', backgroundColor: 'skyblue' }}>
+              <Card key={index} text="info" style={{ margin: '10px', backgroundColor: '#11456e' }}>
                 <Card.Img
                   variant="top"
                   style={{

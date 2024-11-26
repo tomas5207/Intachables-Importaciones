@@ -10,7 +10,7 @@ const ItemListContainer = ({ greeting, productsData, addToCart }) => {
                 {
                     productsData.map(product => {
                         return (
-                            <Card className="outer-card" key={product.id} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "22rem", height: "600px", backgroundColor: "transparent"}}>
+                            <Card className="outer-card" key={product.id} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "22rem", height: "650px", backgroundColor: "transparent"}}>
                             <Card text="info" className="inner-card" style={{ width: '19rem', height: "550px", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "white", position: "relative", bottom: "8.5px" }}>
                                 <Link to={`/producto/${product.id}`}>
                                     <Card.Img variant="top" style={{ height: "300px", width: "250px", objectFit: "contain" }} src={product.imagen} />

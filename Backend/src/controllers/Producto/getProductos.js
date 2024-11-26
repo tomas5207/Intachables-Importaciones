@@ -1,4 +1,4 @@
-const { Producto, Categoria } = require('../../db');
+const { Producto, Categoria, SubCategoria } = require('../../db');
 const util = require('util');
 const fs = require('fs');
 
@@ -15,10 +15,10 @@ const getProductos = async (req, res) => {
             await Producto.bulkCreate(dbProductos);
         }
         const productos = await Producto.findAll({
-            include: {
-                model: Categoria,
-                attributes: ['nombre']
-            }
+            include: [
+                { model: Categoria, attributes: ['id', 'nombre'] },
+                { model: SubCategoria, attributes: ['id', 'nombre'] }
+            ]
         });
         res.json(productos);
     } catch (error) {
