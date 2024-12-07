@@ -21,7 +21,7 @@ const putProducto = async (req, res) => {
                 return res.status(404).json({ message: 'Categoría no encontrada' });
             }
 
-            if (!categoria.SubCategorias || categoria.SubCategorias.length === 0) {
+            if (!categoria.SubCategoria || categoria.SubCategoria.length === 0) {
                 return res.status(400).json({ 
                     message: 'La categoría seleccionada no tiene subcategorías asociadas' 
                 });

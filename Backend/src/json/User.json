@@ -1,8 +1,9 @@
 {
     "user": [
         {
-            "usuario": "admin",
-            "password": "soyunacontraseña123"
+            "email": "jorcintomas@gmail.com",
+            "password": "Nacional2022!",
+            "rol": "Admin"
         }
     ]
 }

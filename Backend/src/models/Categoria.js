@@ -11,7 +11,6 @@ module.exports = (dataBase) => {
       },
       nombre: {
         type: DataTypes.STRING,
-        unique: true,
         allowNull: false,
       },
     },

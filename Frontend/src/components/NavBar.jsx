@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import CartWidget from './CartWidget';
 import { useAuth0 } from '@auth0/auth0-react';
 
-
-
-function NavBar () {
+function NavBar() {
     const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
+    // Determinar si el usuario actual es Admin
+    const isAdmin = isAuthenticated && user?.email === 'jorcintomas@gmail.com';
 
     return (
         <>
@@ -31,15 +32,27 @@ function NavBar () {
                             <Nav.Link style={{ color: 'white' }} href="/about">Sobre Nosotros</Nav.Link>
                             <Nav.Link style={{ color: 'white' }} href="/payform">Formas de Pago</Nav.Link>
                             <Nav.Link style={{ color: 'white' }} href="/contact">Contacto</Nav.Link>
+                            {isAdmin && (
+                                <Nav.Link style={{ color: 'white' }} href="/admin">Administración</Nav.Link>
+                            )}
                         </Nav>
                         <Nav>
                             {isAuthenticated ? (
-                                <img 
-                                    src={user.picture} 
-                                    alt="Perfil" 
-                                    onClick={() => logout({ returnTo: window.location.origin })} 
-                                    style={{ width: '40px', height: '40px', borderRadius: '50%', cursor: 'pointer' }}
-                                />
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <img
+                                        src={user.picture}
+                                        alt="Perfil"
+                                        onClick={() => logout({ returnTo: window.location.origin })}
+                                        style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            borderRadius: '50%',
+                                            cursor: 'pointer',
+                                            marginRight: '10px',
+                                        }}
+                                    />
+                                    <span style={{ color: 'white' }}>{user.name}</span>
+                                </div>
                             ) : (
                                 <button onClick={() => loginWithRedirect()}>Login</button>
                             )}

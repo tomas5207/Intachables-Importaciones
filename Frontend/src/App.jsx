@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom'; 
 import Home from './pages/Home';
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
 import Shop from './pages/Shop';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -10,19 +8,23 @@ import Pay from './pages/Pay';
 import ItemDetailContent from './pages/ItemDetailContent';
 import Cart from './pages/Cart';
 import PurchaseComplete from './pages/PurchaseComplete';
+import AdminLayout from './admin/AdminLayout'; // Layout exclusivo para admin
+import AdminPage from './admin/AdminPage'; // Páginas de administración
+import AdminProducts from './admin/AdminProducts';
+import AdminCategories from './admin/AdminCategories';
+import AdminSubCategories from './admin/AdminSubCategories';
+import MainLayout from './components/MainLayout'; // Layout para el sitio principal
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [cart, setCart] = useState(() => {
-    // Cargar el carrito desde localStorage al iniciar la aplicación
-    const savedCart = localStorage.getItem("cart");
+    const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // Actualizar el carrito en localStorage cada vez que cambie
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
   const addToCart = (product) => {
@@ -39,33 +41,34 @@ function App() {
 
   const removeFromCart = (product) => {
     const updatedCart = cart.filter(item => item.id !== product.id);
-    setCart(updatedCart); // Actualiza el estado del carrito y, a través de useEffect, el localStorage
+    setCart(updatedCart);
   };
 
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
-      <main>
-        <Routes>
-          <Route path='/' element={<Home addToCart={addToCart} />} />
-          <Route path='/producto/:id' element={<ItemDetailContent addToCart={addToCart} />} />
-          <Route path='/cart' element={<Cart cartItems={cart} removeFromCart={removeFromCart} setCart={setCart} />} />
-          <Route path='/shop' element={<Shop addToCart={addToCart} />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/payform' element={<Pay />} />
-          <Route
+    <Routes>
+      {/* Layout principal */}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home addToCart={addToCart} />} />
+        <Route path="/producto/:id" element={<ItemDetailContent addToCart={addToCart} />} />
+        <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} setCart={setCart} />} />
+        <Route path="/shop" element={<Shop addToCart={addToCart} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/payform" element={<Pay />} />
+        <Route
           path="/paymentSuccess"
           element={<PurchaseComplete setCart={setCart} cartItems={cart} />}
         />
-        </Routes>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+      </Route>
+
+      {/* Layout de administración */}
+      <Route element={<AdminLayout />}>
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/productos" element={<AdminProducts />} />
+        <Route path="/admin/categorias" element={<AdminCategories />} />
+        <Route path="/admin/subcategorias" element={<AdminSubCategories />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -60,6 +60,42 @@
             "CategoriaId": 2,
             "SubCategoriaId": 4
 
+        },
+        {
+            "nombre": "Whiskas",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710973993/Producto8_kfuex9.jpg",
+            "descripción": "Comida para perros marca Whiskas",
+            "color": "🟪Morado y⬜Blanco",
+            "codigo": "10025B",
+            "precio": 1500,
+            "stock": 20,
+            "favorito": false,
+            "CategoriaId": 1,
+            "SubCategoriaId": 1
+        },
+        {
+            "nombre": "Pedigree",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710972461/Producto2_x7s91k.webp",
+            "descripción": "Comida para perros marca Pedigree",
+            "color": "🟨Amarillo y ⬜Blanco",
+            "codigo": "10026C",
+            "precio": 1600,
+            "stock": 13,
+            "favorito": false,
+            "CategoriaId": 1,
+            "SubCategoriaId": 2
+        },
+        {
+            "nombre": "Pelota LCM",
+            "imagen": "https://res.cloudinary.com/petpalacecloudinary/image/upload/v1710978652/Producto28_onbtxc.webp",
+            "descripción": "Pelota de goma de caucho marca LCM.",
+            "color": "⬛Negro",
+            "codigo": "10036D",
+            "precio": 300,
+            "stock": 35,
+            "favorito": false,
+            "CategoriaId": 3,
+            "SubCategoriaId": 2
         }
     ]
 }

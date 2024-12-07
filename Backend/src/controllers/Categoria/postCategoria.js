@@ -1,50 +1,36 @@
 const { Categoria, SubCategoria } = require('../../db');
 
 const postCategoria = async (req, res) => {
-    try {
-        const { nombre, subcategorias } = req.body;
+  const { nombre, subcategorias } = req.body;
 
-        // Verificar si la categoría ya existe
-        const [categoria, created] = await Categoria.findOrCreate({
-            where: { nombre },
-        });
+  try {
+    // Crear la nueva categoría
+    const nuevaCategoria = await Categoria.create({ nombre });
 
-        if (!created) {
-            return res.status(400).json({
-                message: `La categoría '${nombre}' ya existe.`,
-            });
-        }
+    if (subcategorias && subcategorias.length > 0) {
+      // Buscar o crear cada subcategoría y obtener sus instancias
+      const subCategoriasCreadas = await Promise.all(
+        subcategorias.map(async (subcat) => {
+          const [subCategoria] = await SubCategoria.findOrCreate({
+            where: { nombre: subcat }, // Busca por nombre
+          });
+          return subCategoria; // Devuelve la instancia de SubCategoria
+        })
+      );
 
-        // Si hay subcategorías en el cuerpo de la solicitud
-        if (subcategorias && Array.isArray(subcategorias)) {
-            for (const subNombre of subcategorias) {
-                // Crear o buscar la subcategoría
-                const [subCategoria] = await SubCategoria.findOrCreate({
-                    where: { nombre: subNombre },
-                });
-
-                // Asociar la subcategoría con la categoría
-                await categoria.addSubCategoria(subCategoria);
-            }
-        }
-
-        // Obtener la categoría con sus subcategorías asociadas actualizadas
-        const categoriaConSubcategorias = await Categoria.findOne({
-            where: { id: categoria.id },
-            include: {
-                model: SubCategoria,
-                through: { attributes: [] }, // Excluir columnas de la tabla intermedia
-            },
-        });
-
-        res.status(201).json({
-            message: 'Categoría creada con éxito',
-            categoria: categoriaConSubcategorias,
-        });
-    } catch (error) {
-        console.error('Error al procesar la solicitud:', error);
-        res.status(500).json({ error: error.message });
+      // Asociar las subcategorías a la nueva categoría
+      await nuevaCategoria.addSubCategoria(subCategoriasCreadas); // Nota el uso del plural
     }
+
+
+    res.status(201).json({
+      message: "Categoría creada exitosamente",
+      nuevaCategoria,
+    });
+  } catch (error) {
+    console.error("Error al crear categoría:", error);
+    res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = { postCategoria };

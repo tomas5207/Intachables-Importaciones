@@ -128,6 +128,117 @@ button:focus-visible {
   display: flex; /* Alineación en fila para escritorio */ /* Permite que los elementos se ajusten en pantallas pequeñas */
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button.active {
+  background-color: #11456e;
+  color: white;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.admin-layout {
+  display: flex;
+  height: 500vh;
+  width: 85vw;
+}
+
+.admin-sidebar {
+  position: relative;
+  bottom: 50px;
+  right: 152px;
+  width: 250px;
+  height: 108%;
+  background-color: #11456e;
+  color: white;
+  padding: 20px;
+}
+
+.admin-sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-sidebar ul li {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.admin-sidebar ul li:hover {
+  background-color: #0d3552;
+}
+
+.admin-content {
+  position: relative;
+  right: 152px;
+  bottom: 50px;
+  width: 100%;
+  height: 108%;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Fondo claro */
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.table th {
+  background-color: #343a40; /* Fondo oscuro */
+  color: white;
+}
+
+.table-container {
+  max-height: 400px; /* Ajusta según la altura deseada */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  border: 1px solid #ddd; /* Bordes opcionales */
+  border-radius: 5px;
+}
+
+
 .category-filter {
   width: 350px; /* Ancho fijo para escritorio */
   padding: 10px; /* Espaciado interno */

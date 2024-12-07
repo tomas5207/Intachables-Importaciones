@@ -11,6 +11,8 @@ export const Shop = ({ addToCart }) => {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedSubCategories, setSelectedSubCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 6;
 
     useEffect(() => {
         axios.get('http://localhost:5000/producto')
@@ -26,11 +28,11 @@ export const Shop = ({ addToCart }) => {
 
     const handleFilterSelect = (filterName, type) => {
         if (type === 'category') {
-            setSelectedCategories(prev => 
+            setSelectedCategories(prev =>
                 prev.includes(filterName) ? prev.filter(cat => cat !== filterName) : [...prev, filterName]
             );
         } else if (type === 'subcategory') {
-            setSelectedSubCategories(prev => 
+            setSelectedSubCategories(prev =>
                 prev.includes(filterName) ? prev.filter(sub => sub !== filterName) : [...prev, filterName]
             );
         }
@@ -65,6 +67,7 @@ export const Shop = ({ addToCart }) => {
         }
 
         setFilteredData(filteredProducts);
+        setCurrentPage(1); // Reiniciar a la primera página si se aplican filtros o búsqueda
     }, [selectedCategories, selectedSubCategories, searchTerm, productsData]);
 
     const removeFilter = (filterName, type) => {
@@ -72,6 +75,18 @@ export const Shop = ({ addToCart }) => {
             setSelectedCategories(prev => prev.filter(cat => cat !== filterName));
         } else if (type === 'subcategory') {
             setSelectedSubCategories(prev => prev.filter(sub => sub !== filterName));
+        }
+    };
+
+    // Calcular los productos actuales para la página
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = filteredData.slice(indexOfFirstProduct, indexOfLastProduct);
+    const totalPages = Math.ceil(filteredData.length / productsPerPage);
+
+    const paginate = (pageNumber) => {
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            setCurrentPage(pageNumber);
         }
     };
 
@@ -98,11 +113,39 @@ export const Shop = ({ addToCart }) => {
                         <p>Oops... no hay productos en la tienda</p>
                     </div>
                 ) : (
-                    <ItemListContainer greeting="" productsData={filteredData} addToCart={addToCart} />
+                    <>
+                        <ItemListContainer greeting="" productsData={currentProducts} addToCart={addToCart} />
+                    </>
                 )}
             </div>
+            {filteredData.length > 0 && (
+                    <div className="pagination">
+                        <button
+                            onClick={() => paginate(currentPage - 1)}
+                            disabled={currentPage === 1}
+                        >
+                            &laquo; Anterior
+                        </button>
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button
+                                key={index + 1}
+                                className={currentPage === index + 1 ? 'active' : ''}
+                                onClick={() => paginate(index + 1)}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                        <button
+                            onClick={() => paginate(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                        >
+                            Siguiente &raquo;
+                        </button>
+                    </div>
+                )}
         </>
     );
 };
 
 export default Shop;
+
