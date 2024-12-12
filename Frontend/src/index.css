@@ -242,11 +242,16 @@ button:focus-visible {
 .category-filter {
   width: 350px; /* Ancho fijo para escritorio */
   padding: 10px; /* Espaciado interno */
-  background-color: #11456e; /* Color de fondo */
+  background-color: #061c30; /* Color de fondo */
   border-right: 1px solid #ccc; /* Línea divisoria */
   position: sticky; /* Mantiene el filtro fijo en la parte superior */
   top: 0; /* Lo mantiene pegado a la parte superior */
-  height: 100vh; /* Altura completa para escritorio */ /* Asegura que no se solape con el contenido */
+  height: 100vh;
+  color: white;  /* Altura completa para escritorio */ /* Asegura que no se solape con el contenido */
+}
+
+.expand-button{
+  color: white;
 }
 
 .category-list {
@@ -327,6 +332,43 @@ button:focus-visible {
   border-radius: 25px;
 }
 
+.outer-card{
+  width: 22rem;
+}
+
+.inner-card{
+  width: 19rem;
+}
+
+.contact-form-container{
+  width: 400px;
+}
+
+.card-img-top{
+  width: 250px;
+  height: 300px;
+}
+
+.admin-page p{
+  font-size: 20px;
+  text-align: justify;
+}
+
+.admin-page ul{
+  font-size: 20px;
+  text-align: justify;
+  margin-left: 50px;
+}
+
+.AdminImage{
+  width: 500px;
+  height: 300px;
+}
+
+.ImagenFavorita{
+  width: 800px;
+  height: 100px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -339,4 +381,225 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Ajustes para dispositivos móviles */
+@media screen and (max-width: 480px) {
+  /* Reducir el tamaño del texto de los enlaces */
+  
+  .navbar{
+    width: 153.6%;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 14px;
+    width: 50%;
+    position: relative;
+    left: 200px;
+  }
+
+  /* Ajustar el tamaño del logo */
+  .navbar-brand img {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: 150px;
+    top: 4px;
+  }
+
+  /* Centrar los elementos dentro de la barra */
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .d-flex.align-items-center{
+    position: relative;
+    left: 65px;
+  }
+
+  .d-flex.align-items-center.navbar-nav{
+    width:500px;
+  }
+
+  /* Espaciado adicional para el widget del carrito */
+  .cart-widget {
+    position: relative;
+    left: 450px;
+    bottom: 35px;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul {
+    padding: 0;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+
+  .footer-column p {
+    font-size: 14px;
+  }
+
+  /* Espaciado entre redes sociales */
+  .footer-column a {
+    margin: 0 5px;
+  }
+
+  .mt-auto{
+    width: 153.6%;
+  }
+  .container{
+    width: 100px;
+    position: relative;
+    left: 70px;
+  }
+
+  .container a{
+    position: relative;
+    left: 8px;
+  }
+
+.container p{
+  position: relative;
+  left: 8px;
+}
+
+.container h3.h-3{
+  position: relative;
+  left: 5px;
+}
+
+.greeting{
+  position: relative;
+  left: 25px;
+}
+
+.outer-card{
+  position: relative;
+  left: 20px;
+  width: 18rem;
+}
+
+.inner-card{
+    width: 15rem;
+}
+
+.card-img-top{
+  width: 150px;
+  height: 200px;
+}
+
+.category-filter {
+  position: relative;
+  right: 20px;
+  width: 380px;
+}
+
+.category-filter h3{
+  position: relative;
+  right: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100px;
+}
+
+.shop-container{
+  width: 380px;
+}
+
+.expand-button{
+  position: relative;
+  right: 3px;
+  bottom: 1px;
+}
+
+.category-item {
+   position: relative;
+   right: 10px;
+   font-size: 12px;
+   width: 55px;
+}
+
+.subcategory-item{
+  position: relative;
+  right: 25px;
+  font-size: 12px;
+  width:55px;
+}
+
+.cat-card{
+  position: relative;
+  left: 20px;
+}
+
+.dog-card{
+  position: relative;
+  left: 20px;
+}
+
+.about{
+  position: relative;
+  left: 18px;
+}
+
+.pay{
+  position: relative;
+  left: 17px;
+}
+
+.contact-form-container{
+  position: relative;
+  width: 350px;
+}
+
+.admin-page p{
+  font-size: 15px;
+}
+
+.admin-page ul{
+  font-size: 15px;
+}
+
+.AdminImage{
+  width: 500px;
+  height: 300px;
+}
+
+.ImagenFavorita{
+  width: 800px;
+  height: 100px;
+}
+
+main{
+  position: relative;
+  left: 10px;
+}
+
+.admin-content {
+  position: relative;
+  right: 300px;
+  width: 300%;
+}
+
+.admin-sidebar {
+  position: relative;
+  left: -30px;
+  width: 300%;
+}
+
+.admin-products{
+  width: 300px;
+}
+
 }

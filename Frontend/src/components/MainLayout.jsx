@@ -12,7 +12,7 @@ function MainLayout() {
       <main>
         <Outlet /> {/* Renderiza el contenido de las rutas del sitio principal */}
       </main>
-      <footer>
+      <footer className="mt-auto">
         <Footer />
       </footer>
     </>
