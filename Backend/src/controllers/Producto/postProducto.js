@@ -1,7 +1,7 @@
 const { Producto, Categoria, SubCategoria } = require('../../db');
 
 const postProducto = async (req, res) => {
-    const { nombre, imagen , descripcion , color , codigo ,precio, stock , favorito,CategoriaId, SubCategoriaId } = req.body;
+    const { nombre, imagen , descripción , color , codigo ,precio, favorito,CategoriaId, SubCategoriaId } = req.body;
 
     try {
         // Validar categoría existente
@@ -23,11 +23,10 @@ const postProducto = async (req, res) => {
         const producto = await Producto.create({
             nombre,
             imagen,
-            descripcion,
+            descripción,
             color,
             codigo,
             precio,
-            stock,
             favorito,
             CategoriaId,
             SubCategoriaId,

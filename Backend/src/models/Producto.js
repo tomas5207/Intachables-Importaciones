@@ -11,7 +11,7 @@ module.exports = (dataBase) => {
             type: DataTypes.STRING
         },
         imagen: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         descripción: {
             type: DataTypes.TEXT
@@ -23,9 +23,6 @@ module.exports = (dataBase) => {
             type: DataTypes.STRING
         },
         precio: {
-            type: DataTypes.INTEGER
-        },
-        stock:{
             type: DataTypes.INTEGER
         },
         favorito:{

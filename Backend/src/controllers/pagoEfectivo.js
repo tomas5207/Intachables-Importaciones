@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 const pagoEfectivo = async (req, res) => {
-  const { items, total, emailCliente } = req.body;
+  const { items, total, nombreCliente, direccionCliente, telefonoCliente, dia } = req.body;
 
   try {
     // Crear el contenido del correo
@@ -14,7 +14,10 @@ const pagoEfectivo = async (req, res) => {
     const mensajeHTML = `
     <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
       <h2 style="color: #4CAF50;">Nueva compra realizada en efectivo</h2>
-      <p style="font-size: 16px;">Mail del cliente: <strong>${emailCliente}</strong></p>
+      <p style="font-size: 16px;">Nombre del cliente: <strong>${nombreCliente}</strong></p>
+      <p style="font-size: 16px;">Dirección del cliente: <strong>${direccionCliente}</strong></p>
+      <p style="font-size: 16px;">Teléfono del cliente: <strong>${telefonoCliente}</strong></p>
+      <p style="font-size: 16px;">Día disponible para recibir el pedido: <strong>${dia}</strong></p>
       <h3 style="color: #4CAF50;">Productos comprados:</h3>
       <ul style="font-size: 16px; line-height: 1.6;">
         ${productosHTML}

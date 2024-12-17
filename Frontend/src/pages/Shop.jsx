@@ -12,6 +12,7 @@ export const Shop = ({ addToCart }) => {
     const [selectedSubCategories, setSelectedSubCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
+    const [showCategoryFilter, setShowCategoryFilter] = useState(false); // Estado para mostrar/ocultar filtro
     const productsPerPage = 6;
 
     useEffect(() => {
@@ -62,7 +63,8 @@ export const Shop = ({ addToCart }) => {
         // Filtrar por término de búsqueda
         if (searchTerm) {
             filteredProducts = filteredProducts.filter(product =>
-                product.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+                product.nombre.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                product.codigo.toLowerCase().includes(searchTerm.toLowerCase()) // Agregado para buscar por código
             );
         }
 
@@ -90,6 +92,11 @@ export const Shop = ({ addToCart }) => {
         }
     };
 
+    // Toggle para mostrar/ocultar el filtro en pantallas pequeñas
+    const toggleCategoryFilter = () => {
+        setShowCategoryFilter(prev => !prev);
+    };
+
     return (
         <>
             <ImageCarrusel PageRefrence="Tienda" reference="Home/Tienda" />
@@ -106,46 +113,60 @@ export const Shop = ({ addToCart }) => {
                     </span>
                 ))}
             </div>
+
+            {/* Botón para desplegar filtro de categorías en pantallas pequeñas */}
+            <button 
+                className="category-toggle-button"
+                onClick={toggleCategoryFilter}
+            >
+                {showCategoryFilter ? 'Ocultar Filtro' : 'Ver Filtro'}
+            </button>
+
+            {/* Mostrar el filtro fuera de shop-container solo en móviles */}
+            {showCategoryFilter && (
+                <CategoryFilter 
+                    onFilterSelect={handleFilterSelect} 
+                    className="category-filter-mobile"
+                />
+            )}
+            <br/>
             <div className="shop-container">
-                <CategoryFilter onFilterSelect={(name, type) => handleFilterSelect(name, type)} />
                 {filteredData.length === 0 ? (
                     <div className="no-products-message">
                         <p>Oops... no hay productos en la tienda</p>
                     </div>
                 ) : (
-                    <>
-                        <ItemListContainer greeting="" productsData={currentProducts} addToCart={addToCart} />
-                    </>
+                    <ItemListContainer greeting="" productsData={currentProducts} addToCart={addToCart} />
                 )}
             </div>
+
             {filteredData.length > 0 && (
-                    <div className="pagination">
+                <div className="pagination">
+                    <button
+                        onClick={() => paginate(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        &laquo; Anterior
+                    </button>
+                    {Array.from({ length: totalPages }, (_, index) => (
                         <button
-                            onClick={() => paginate(currentPage - 1)}
-                            disabled={currentPage === 1}
+                            key={index + 1}
+                            className={currentPage === index + 1 ? 'active' : ''}
+                            onClick={() => paginate(index + 1)}
                         >
-                            &laquo; Anterior
+                            {index + 1}
                         </button>
-                        {Array.from({ length: totalPages }, (_, index) => (
-                            <button
-                                key={index + 1}
-                                className={currentPage === index + 1 ? 'active' : ''}
-                                onClick={() => paginate(index + 1)}
-                            >
-                                {index + 1}
-                            </button>
-                        ))}
-                        <button
-                            onClick={() => paginate(currentPage + 1)}
-                            disabled={currentPage === totalPages}
-                        >
-                            Siguiente &raquo;
-                        </button>
-                    </div>
-                )}
+                    ))}
+                    <button
+                        onClick={() => paginate(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        Siguiente &raquo;
+                    </button>
+                </div>
+            )}
         </>
     );
 };
 
 export default Shop;
-

@@ -8,12 +8,13 @@ import Pay from './pages/Pay';
 import ItemDetailContent from './pages/ItemDetailContent';
 import Cart from './pages/Cart';
 import PurchaseComplete from './pages/PurchaseComplete';
-import AdminLayout from './admin/AdminLayout'; // Layout exclusivo para admin
-import AdminPage from './admin/AdminPage'; // Páginas de administración
+import AdminLayout from './admin/AdminLayout';
+import AdminPage from './admin/AdminPage';
 import AdminProducts from './admin/AdminProducts';
 import AdminCategories from './admin/AdminCategories';
 import AdminSubCategories from './admin/AdminSubCategories';
-import MainLayout from './components/MainLayout'; // Layout para el sitio principal
+import MainLayout from './components/MainLayout';
+import NoLayout from './components/NoLayout'; // Nuevo layout
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -55,6 +56,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/payform" element={<Pay />} />
+      </Route>
+
+      {/* Layout sin NavBar ni Footer */}
+      <Route element={<NoLayout />}>
         <Route
           path="/paymentSuccess"
           element={<PurchaseComplete setCart={setCart} cartItems={cart} />}

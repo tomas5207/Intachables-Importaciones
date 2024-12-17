@@ -17,6 +17,7 @@ const AdminProducts = () => {
     try {
       const response = await axios.get("http://localhost:5000/producto");
       setProducts(response.data);
+      console.log(response.data);
     } catch (err) {
       console.error("Error al obtener los productos:", err);
       setError(err.message);
@@ -99,7 +100,6 @@ const AdminProducts = () => {
               <th>Color</th>
               <th>Código</th>
               <th>Precio</th>
-              <th>Stock</th>
               <th>Favorito</th>
               <th>Categoría</th>
               <th>Subcategoría</th>
@@ -126,7 +126,6 @@ const AdminProducts = () => {
                   <td>{product.color}</td>
                   <td>{product.codigo}</td>
                   <td>{product.precio}</td>
-                  <td>{product.stock}</td>
                   <td>{product.favorito ? "Sí" : "No"}</td>
                   <td>{product.Categorium?.nombre || "Sin categoría"}</td>
                   <td>{product.SubCategorium?.nombre || "Sin subcategoría"}</td>

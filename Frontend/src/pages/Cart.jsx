@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import Card from 'react-bootstrap/Card'; // Importa el componente Card de Bootstrap
-import Button from 'react-bootstrap/Button'; // Importa el componente Button de Bootstrap
-import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate de React Router
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 import { Wallet, initMercadoPago } from '@mercadopago/sdk-react';
-import axios from 'axios'; 
-import Swal from 'sweetalert2'; 
-import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const Cart = ({ cartItems, removeFromCart, setCart}) => {
-  const navigate = useNavigate(); 
-  const [preferenceId, setPreferenceId] = useState(null);// Inicializa el hook de navegación
-  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+const Cart = ({ cartItems, removeFromCart, setCart }) => {
+  const navigate = useNavigate();
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [userData, setUserData] = useState({
+    name: '',
+    phone: '',
+    address: '',
+    deliveryDate: '',
+  });
 
   useEffect(() => {
-    // Inicializa Mercado Pago con tu public key
     initMercadoPago('APP_USR-08bc1ba8-ee93-4c2c-8405-cf9efc415eea');
 
-    // Solicita el preferenceId al backend usando axios
     const createPreference = async () => {
       try {
         const response = await axios.post('http://localhost:5000/pago/mercado', {
-          ArrayItems: cartItems
+          ArrayItems: cartItems,
         });
-        // Asegúrate de que el servidor devuelva preferenceId
         setPreferenceId(response.data.preferenceId);
       } catch (error) {
         console.error('Error al crear la preferencia:', error);
@@ -32,71 +36,53 @@ const Cart = ({ cartItems, removeFromCart, setCart}) => {
     createPreference();
   }, [cartItems]);
 
-  // Calcula el monto total del carrito
   const totalAmount = cartItems.reduce((total, item) => total + item.precio * item.quantity, 0);
 
+  const handlePayInCash = () => {
+    setShowForm(true);
+  };
 
-  // Función para manejar el pago en efectivo
-  const handlePayInCash = async () => {
-    if (isAuthenticated) {
-      const emailCliente = user?.email; // Obtener el email del usuario autenticado
+  const confirmCashPayment = async () => {
+    try {
+      await axios.post('http://localhost:5000/pago/efectivo', {
+        items: cartItems,
+        total: totalAmount,
+        nombreCliente: userData.name,
+        direccionCliente: userData.address,
+        telefonoCliente: userData.phone,
+        dia: userData.deliveryDate,
+        paymentMethod: 'efectivo',
+      });
 
-      try {
-        await axios.post('http://localhost:5000/pago/efectivo', {
-          items: cartItems,
-          total: totalAmount,
-          emailCliente:emailCliente, // Usa el email del usuario autenticado
-        });
-
-        Swal.fire({
-          title: '¡Solicitud de pago en efectivo procesada con éxito!',
-          text: `Se ha enviado su solicitud de pago al email del vendedor. Por favor, pasar por la sede local o comunicarse con el vendedor.`,
-          icon: 'success',
-          confirmButtonText: 'Cerrar'
-        });
-
-        setCart([]);
-        navigate('/');
-      } catch (error) {
-        console.error('Error en el pago en efectivo:', error);
-        Swal.fire({
-          title: 'Error',
-          text: 'Error al procesar el pago en efectivo.',
-          icon: 'error',
-          confirmButtonText: 'Cerrar'
-        });
-      }
-    } else {
       Swal.fire({
-        title: 'No estás logueado',
-        text: 'Por favor, inicia sesión para poder hacer el pago en efectivo.',
-        icon: 'warning',
-        confirmButtonText: 'Iniciar sesión'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          loginWithRedirect();  // Redirigir al login si el usuario no está autenticado.
-        }
-      });;
+        title: '¡Compra registrada!',
+        text: 'Se ha enviado un correo al vendedor con los detalles de la compra.',
+        icon: 'success',
+        confirmButtonText: 'Cerrar',
+      });
+
+      setCart([]);
+      setShowForm(false);
+      navigate('/');
+    } catch (error) {
+      console.error('Error en el pago en efectivo:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo registrar la compra. Inténtalo nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
     }
   };
 
 
-  // Renderiza el componente
   return (
     <div style={{ textAlign: 'center', color: '#11456e' }}>
       {cartItems.length === 0 ? (
         <p>No hay items en el carrito</p>
       ) : (
         <>
-          {/* Contenedor con scroll para las tarjetas de productos */}
-          <div
-            style={{
-              maxHeight: '400px', // Limita la altura del contenedor
-              overflowY: 'auto', // Habilita el scroll vertical
-              margin: '0 auto', // Centra el contenedor
-              width: '80%', // Ajusta el ancho del contenedor
-            }}
-          >
+          <div style={{ maxHeight: '400px', overflowY: 'auto', margin: '0 auto', width: '80%' }}>
             {cartItems.map((item, index) => (
               <Card key={index} text="info" style={{ margin: '10px', backgroundColor: '#11456e' }}>
                 <Card.Img
@@ -108,7 +94,7 @@ const Cart = ({ cartItems, removeFromCart, setCart}) => {
                     margin: '0 auto',
                     objectFit: 'cover',
                   }}
-                  src={item.imagen} // Imagen del item
+                  src={item.imagen}
                 />
                 <Card.Body>
                   <Card.Title style={{ color: 'white' }}>{item.nombre}</Card.Title>
@@ -123,16 +109,20 @@ const Cart = ({ cartItems, removeFromCart, setCart}) => {
               </Card>
             ))}
           </div>
-  
+
           <h3>Total a pagar: ${totalAmount}</h3>
-  
+
           {totalAmount < 2000 ? (
             <div style={{ color: 'red', marginTop: '25px' }}>
               <p>El total mínimo para comprar productos es de $2000. Por favor ingrese más productos</p>
             </div>
           ) : (
             <>
-              <Button variant="success" onClick={handlePayInCash} style={{ marginTop: '20px', width: '400px', height: '45px' }}>
+              <Button
+                variant="success"
+                onClick={handlePayInCash}
+                style={{ marginTop: '20px', width: '400px', height: '45px' }}
+              >
                 Pagar en efectivo
               </Button>
               <div>
@@ -142,10 +132,67 @@ const Cart = ({ cartItems, removeFromCart, setCart}) => {
           )}
         </>
       )}
+
+      {/* Modal para el formulario */}
+      <Modal show={showForm} onHide={() => setShowForm(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Datos del comprador</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.name}
+                onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Teléfono</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.phone}
+                onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Dirección</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.address}
+                onChange={(e) => setUserData({ ...userData, address: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group>
+            <Form.Label>Día de recepción</Form.Label>
+              <Form.Control
+              as="select"
+              value={userData.deliveryDate}
+              onChange={(e) => setUserData({ ...userData, deliveryDate: e.target.value })}
+              >
+                  <option value="">Seleccione un día para recibir su pedido</option>
+                  <option value="Lunes (9:00 a 12:00 hs)">Lunes (9:00 a 12:00 hs)</option>
+                  <option value="Martes (9:00 a 12:00 hs)">Martes (9:00 a 12:00 hs)</option>
+                  <option value="Miércoles (9:00 a 12:00 hs)">Miércoles (9:00 a 12:00 hs)</option>
+                  <option value="Jueves (9:00 a 12:00 hs)">Jueves (9:00 a 12:00 hs)</option>
+                  <option value="Viernes (9:00 a 12:00 hs)">Viernes (9:00 a 12:00 hs)</option>
+                  <option value="Sábado (9:00 a 12:00 hs)">Sábado (9:00 a 12:00 hs)</option>
+              </Form.Control>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowForm(false)}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={confirmCashPayment}>
+            Confirmar datos
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
-  
-  
 };
 
-export default Cart; // Exporta el componente Cart
+export default Cart;

@@ -2,7 +2,7 @@ const { Producto, Categoria, SubCategoria } = require('../../db');
 
 const putProducto = async (req, res) => {
     const { id } = req.params; // ID del producto a actualizar
-    const { nombre, imagen , descripcion , color , codigo ,precio, stock , favorito,CategoriaId, SubCategoriaId } = req.body;
+    const { nombre, imagen , descripción , color , codigo ,precio, favorito,CategoriaId, SubCategoriaId } = req.body;
 
     try {
         const producto = await Producto.findByPk(id);
@@ -34,11 +34,10 @@ const putProducto = async (req, res) => {
         await producto.update({
             nombre,
             imagen,
-            descripcion,
+            descripción,
             color,
             codigo,
             precio,
-            stock,
             favorito,
             CategoriaId,
             SubCategoriaId,

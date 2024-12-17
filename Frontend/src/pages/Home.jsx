@@ -21,7 +21,7 @@ export const Home = ({ addToCart }) => {
 
     return (
         <>
-        <ImageCarrusel PageRefrence="Home" reference=""/>
+        <ImageCarrusel PageRefrence="Inicio" reference=""/>
         <ItemListContainer greeting="Productos destacados de la semana:" productsData={productsData} addToCart={addToCart}/>
         <Card style={{ color: "white", width: "100%", padding: "20px", overflow: "hidden" }} className='cat-card'>
     <p style={{ fontSize: "20px", textAlign: "justify"}}>

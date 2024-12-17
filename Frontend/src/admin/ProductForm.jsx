@@ -17,7 +17,7 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
     SubCategoriaId: 0,
   });
 
-  // Rellenar los datos del producto si se recibe `productToEdit`
+  // Prellenar datos del producto si se recibe `productToEdit`
   useEffect(() => {
     if (productToEdit) {
       setFormData({
@@ -35,7 +35,7 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
     }
   }, [productToEdit]);
 
-  // Fetch categorías y subcategorías al cargar el componente
+  // Cargar categorías y subcategorías
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -61,7 +61,19 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
 
   // Manejar cambios en los inputs
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked, files } = e.target;
+
+    // Manejar subida de imagen
+    if (name === "imagen" && files?.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, imagen: reader.result }); // Base64 temporal
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
@@ -73,13 +85,11 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
     e.preventDefault();
     try {
       if (productToEdit) {
-        // Actualizar producto existente
         await axios.put(`http://localhost:5000/producto/${productToEdit.id}`, formData, {
           headers: { "Content-Type": "application/json" },
         });
         alert("Producto modificado exitosamente");
       } else {
-        // Crear un nuevo producto
         await axios.post("http://localhost:5000/producto", formData, {
           headers: { "Content-Type": "application/json" },
         });
@@ -110,14 +120,15 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
           />
         </div>
         <div className="form-group">
-          <label>Imagen (URL)</label>
+          <label>Imagen</label>
           <input
-            type="text"
+            type="file"
             name="imagen"
-            value={formData.imagen}
             onChange={handleChange}
             className="form-control"
+            accept="image/*"
           />
+          {formData.imagen && <img src={formData.imagen} alt="Preview" style={{ maxWidth: "200px" }} />}
         </div>
         <div className="form-group">
           <label>Descripción</label>
@@ -155,17 +166,6 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
             type="number"
             name="precio"
             value={formData.precio}
-            onChange={handleChange}
-            required
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label>Stock</label>
-          <input
-            type="number"
-            name="stock"
-            value={formData.stock}
             onChange={handleChange}
             required
             className="form-control"

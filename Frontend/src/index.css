@@ -109,14 +109,18 @@ button:focus-visible {
 
 .customButtonDetail .stockButton{
   position: relative;
-  right: 155px;
+  right: 25px;
   bottom: 15px;
 }
 
 .customButtonDetail .addButton{
   position: relative;
-  right: 125px;
+  left: 25px;
   bottom: 15px;
+}
+
+.inner-card div{
+  font-size: 20px;
 }
 
 .payBanner{
@@ -241,25 +245,36 @@ button:focus-visible {
 
 .category-filter {
   width: 350px; /* Ancho fijo para escritorio */
-  padding: 10px; /* Espaciado interno */
+  padding: 1rem; /* Espaciado interno */
   background-color: #061c30; /* Color de fondo */
   border-right: 1px solid #ccc; /* Línea divisoria */
-  position: sticky; /* Mantiene el filtro fijo en la parte superior */
+  position: relative; /* Mantiene el filtro fijo en la parte superior */
   top: 0; /* Lo mantiene pegado a la parte superior */
   height: 100vh;
-  color: white;  /* Altura completa para escritorio */ /* Asegura que no se solape con el contenido */
+  color: white; 
 }
 
 .expand-button{
   color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.category-filter.mobile {
+  display: none; /* Ocultar por defecto en móviles */
+}
+
+.category-list.mobile-list {
+  display: none; /* Ocultar lista en móviles */
 }
 
 .category-list {
-  list-style: none; /* Esto quita el punto al lado de los elementos de la lista */
+  list-style-type: none; /* Esto quita el punto al lado de los elementos de la lista */
   padding: 0; /* Quita el padding predeterminado */
 }
 
 .category-item {
+  margin: 0.5rem 0;
   cursor: pointer; /* Cambia el cursor a pointer cuando pasas el ratón sobre el elemento */
   padding: 5px; /* Espaciado alrededor de cada ítem */
   transition: background-color 0.3s; /* Efecto de transición */
@@ -334,10 +349,12 @@ button:focus-visible {
 
 .outer-card{
   width: 22rem;
+  height: 650px;
 }
 
 .inner-card{
   width: 19rem;
+  height: 550px;
 }
 
 .contact-form-container{
@@ -370,6 +387,145 @@ button:focus-visible {
   height: 100px;
 }
 
+/* Estilos generales */
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 28rem;
+  height: 500px;
+  background-color: transparent;
+  position: relative;
+  right: 500px;
+}
+
+.item-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.button-detail-card {
+  position: relative;
+  left: 120px;
+  bottom: 450px;
+  width: 30rem;
+  height: 80px;
+}
+
+.pay-banner-card {
+  position: relative;
+  left: 120px;
+  bottom: 400px;
+  width: 40rem;
+  height: 80px;
+}
+
+.pay-banner-card img {
+  width: 50px;
+  height: 50px;
+}
+
+.pay-text-left {
+  font-size: 20px;
+  position: relative;
+  bottom: 60px;
+  right: 150px;
+}
+
+.pay-text-middle {
+  font-size: 20px;
+  position: relative;
+  bottom: 88px;
+}
+
+.pay-text-right {
+  font-size: 20px;
+  position: relative;
+  bottom: 170px;
+  left: 9rem;
+}
+
+.pay-info-link {
+  font-size: 20px;
+  position: relative;
+  bottom: 400px;
+  left: 120px;
+  color: #11456e;
+}
+
+.product-details-list {
+  position: relative;
+  bottom: 350px;
+  right: 80px;
+  height: 80px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.product-details-list li {
+  padding: 0;
+  margin: 0;
+}
+
+.product-details-list a {
+  font-size: 20px;
+  color: #11456e;
+}
+
+.description-section {
+  position: relative;
+  bottom: 200px;
+  right: 550px;
+  height: 80px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.description-title {
+  text-decoration: underline;
+  color: #11456e;
+}
+
+.description-text {
+  font-size: 20px;
+  text-align: justify;
+}
+
+.imagenEfectivo{
+  position: relative;
+  bottom: 20px;
+}
+
+.imagenMercado{
+    position: relative;
+    bottom: 125px;
+    left: 528px;
+}
+
+p.about {
+  font-size: 20px;
+}
+
+p.pay{
+  font-size: 20px;
+}
+
+.category-toggle-button {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -385,10 +541,51 @@ button:focus-visible {
 
 /* Ajustes para dispositivos móviles */
 @media screen and (max-width: 480px) {
-  /* Reducir el tamaño del texto de los enlaces */
-  
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Ocultar el scroll horizontal */
+  }
+
+  .category-filter.mobile {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: white;
+    padding: 2px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+  .category-list.mobile-list {
+    display: block;
+  }
+
+  .category-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.expand-button {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.subcategory-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.subcategory-item {
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
   .navbar{
-    width: 153.6%;
+    width: 140%;
   }
 
   .navbar-nav .nav-link {
@@ -398,7 +595,6 @@ button:focus-visible {
     left: 200px;
   }
 
-  /* Ajustar el tamaño del logo */
   .navbar-brand img {
     width: 25px;
     height: 25px;
@@ -407,7 +603,6 @@ button:focus-visible {
     top: 4px;
   }
 
-  /* Centrar los elementos dentro de la barra */
   .navbar-collapse {
     text-align: center;
   }
@@ -421,10 +616,9 @@ button:focus-visible {
     width:500px;
   }
 
-  /* Espaciado adicional para el widget del carrito */
   .cart-widget {
     position: relative;
-    left: 450px;
+    left: 420px;
     bottom: 35px;
     background-color: white;
     border-radius: 50%;
@@ -451,14 +645,14 @@ button:focus-visible {
     font-size: 14px;
   }
 
-  /* Espaciado entre redes sociales */
   .footer-column a {
     margin: 0 5px;
   }
 
   .mt-auto{
-    width: 153.6%;
+    width: 140%;
   }
+
   .container{
     width: 100px;
     position: relative;
@@ -470,136 +664,360 @@ button:focus-visible {
     left: 8px;
   }
 
-.container p{
-  position: relative;
-  left: 8px;
-}
+  .container p{
+    position: relative;
+    left: 8px;
+  }
 
-.container h3.h-3{
-  position: relative;
-  left: 5px;
-}
+  .container h3.h-3{
+    position: relative;
+    left: 5px;
+  }
 
-.greeting{
-  position: relative;
-  left: 25px;
-}
+  .greeting{
+    position: relative;
+    right: 8px;
+  }
 
-.outer-card{
-  position: relative;
-  left: 20px;
-  width: 18rem;
-}
+  /* Modificar el tamaño de las cards para que haya dos por fila */
+  .outer-card, .inner-card {
+    width: 50%; /* Ajustar el tamaño de las tarjetas */
+    height: auto; /* Ajustar la altura según el contenido */
+    margin: 10px 0; /* Espaciado entre las tarjetas */
+  }
 
-.inner-card{
-    width: 15rem;
-}
+  .outer-card {
+    width: 40%; /* Dos cards por fila */
+  }
 
-.card-img-top{
-  width: 150px;
-  height: 200px;
-}
+  .inner-card {
+    width: 50%; 
+  }
 
-.category-filter {
-  position: relative;
-  right: 20px;
-  width: 380px;
-}
+  .pNombre{
+    font-size: 15px !important;
+  }
 
-.category-filter h3{
-  position: relative;
-  right: 20px;
-  font-size: 15px;
-  font-weight: bold;
-  width: 100px;
-}
+  .pPrecio{
+    font-size: 15px !important;
+  }
 
-.shop-container{
-  width: 380px;
-}
+  .stockButton{
+    position: relative;
+    bottom: 6px;
+    width: 80px;
+  }
 
-.expand-button{
-  position: relative;
-  right: 3px;
-  bottom: 1px;
-}
+  .addButton{
+    width: 80px;
+    height: 60px;
+    position: relative;
+    left: -5px;
+    font-size: 12px;
+  }
 
-.category-item {
-   position: relative;
-   right: 10px;
-   font-size: 12px;
-   width: 55px;
-}
+  .card-img-top{
+    width: 60px;
+    height: 100px;
+  }
 
-.subcategory-item{
-  position: relative;
-  right: 25px;
-  font-size: 12px;
-  width:55px;
-}
+  .card-body{
+    font-size: 15px;
+  }
 
-.cat-card{
-  position: relative;
-  left: 20px;
-}
+  .category-filter {
+    position: relative;
+    width: 300px;
+  }
 
-.dog-card{
-  position: relative;
-  left: 20px;
-}
+  .category-filter h3{
+    position: relative;
+    right: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100px;
+  }
 
-.about{
-  position: relative;
-  left: 18px;
-}
+  .shop-container{
+    width: 380px;
+  }
 
-.pay{
-  position: relative;
-  left: 17px;
-}
+  .expand-button{
+    position: relative;
+    right: 3px;
+    bottom: 1px;
+  }
 
-.contact-form-container{
-  position: relative;
-  width: 350px;
-}
+  .category-item {
+    position: relative;
+    right: 10px;
+    font-size: 12px;
+    width: 55px;
+  }
 
-.admin-page p{
-  font-size: 15px;
-}
+  .subcategory-list{
+    width: 100px;
+  }
+  
 
-.admin-page ul{
-  font-size: 15px;
-}
+  .subcategory-item{
+    position: relative;
+    right: 25px;
+    font-size: 12px;
+    width:65px;
+  }
 
-.AdminImage{
-  width: 500px;
-  height: 300px;
-}
+  .cat-card{
+    position: relative;
+    right: 10px;
+  }
 
-.ImagenFavorita{
-  width: 800px;
-  height: 100px;
-}
+  .dog-card{
+    position: relative;
+    right: 10px;
+  }
 
-main{
-  position: relative;
-  left: 10px;
-}
+  .about{
+    position: relative;
+    right: 10px;
+  }
 
-.admin-content {
-  position: relative;
-  right: 300px;
-  width: 300%;
-}
+  p.about {
+    font-size: 15px;
+  }
 
-.admin-sidebar {
-  position: relative;
-  left: -30px;
-  width: 300%;
-}
+  .pay{
+    position: relative;
+    left: -10px;
+  }
 
-.admin-products{
-  width: 300px;
-}
+  p.pay{
+    font-size: 15px;
+  }
 
+  .contact-form-container{
+    position: relative;
+    width: 350px;
+    left: -10px;
+  }
+
+  .admin-page h1 {
+    font-size: 18px; /* Tamaño reducido */
+    text-align: center; /* Centrar texto */
+    left: -20px;
+    top: 9px; 
+    position: relative;
+  }
+
+  .admin-page p {
+    font-size: 14px; /* Tamaño reducido */
+    text-align: justify;
+    left: -20px;
+    position: relative; /* Eliminar posicionamiento lateral */
+    margin: 10px; /* Espaciado externo */
+  }
+
+  .admin-page ul {
+    font-size: 14px; /* Tamaño reducido */
+    padding-left: 15px;
+    position: relative;
+    left: -40px;
+  }
+
+  .AdminImage {
+    width: 200px; /* Imágenes más pequeñas y adaptables */
+    height: auto; /* Altura proporcional */
+    margin: 10px auto; /* Centrar imágenes */
+    display: block;
+  }
+
+  .ImagenFavorita {
+    width: 120%;
+    height: auto; /* Ajustar altura proporcionalmente */
+    margin: 10px auto;
+    display: block;
+    position: relative;
+    left: -28px;
+  }
+
+  main{
+    position: relative;
+    left: 10px;
+  }
+
+  .admin-content {
+    position: static; /* Quitar posición relativa */
+    width: 100%; /* Ocupar todo el ancho */
+    padding: 10px;
+    position: relative;
+    left: -50px;
+  }
+
+  .admin-sidebar {
+    position: static; /* Quitar posición relativa */
+    width: 100%; /* Ancho completo */ /* Fondo para diferenciar */
+    text-align: center;
+    position: relative;
+    left: -50px;
+  }
+
+  .admin-sidebar h2 {
+    font-size: 18px; /* Tamaño de fuente reducido */
+    margin: 10px 0; /* Espaciado */
+  }
+
+  .admin-sidebar nav ul {
+    list-style: none; /* Quitar viñetas */
+    padding: 0;
+  }
+
+  .admin-sidebar nav ul li {
+    margin: 10px 0; /* Espaciado entre elementos */
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .admin-products {
+    width: 90%; /* Ajustar el ancho */
+    margin: 0 auto;
+    position: relative;
+    left: -20px;
+  }
+
+  .admin-products h2{
+    position: relative;
+    left: -10px;
+    top: 5px;
+  }
+
+  .admin-products button{
+    position: relative;
+    left: -10px;
+  }
+
+  .admin-categories{
+    width: 80%;
+    position: relative;
+    left: -25px;
+  }
+
+  .admin-categories h2{
+    position: relative;
+    top: 5px;
+    left: -10px;
+  }
+
+  .admin-categories h3{
+    position: relative;
+    top: 5px;
+  }
+
+  .item-card {
+    width: 90%; /* Ancho adaptable */
+    height: auto; /* Altura dinámica */
+    right: 1px; /* Centrado */
+    margin: 0 auto; 
+    position: relative;/* Márgenes automáticos para centrar */
+  }
+
+  .button-detail-card {
+    width: 90%;
+    left: 0;
+    bottom: 0;
+    margin: 20px auto;
+  }
+
+  .pay-banner-card {
+    width: 90%;
+    left: -8px;
+    bottom: 0;
+    margin: 20px auto;
+    position: relative;
+  }
+
+  .pay-banner-card img {
+    width: 35px; /* Tamaño reducido */
+    height: 35px;
+  }
+
+  .pay-text-left,
+  .pay-text-middle,
+  .pay-text-right {
+    font-size: 15px; /* Texto más pequeño */
+  }
+
+  .pay-text-left{
+    position: relative;
+    top: -40px;
+    left: -65px;
+  }
+
+  .pay-text-middle{
+    position: relative;
+    top: -62px;
+  }
+
+  .pay-text-right{
+    position: relative;
+    top: -120px;
+    left: 70px;
+  }
+
+  .pay-info-link {
+    font-size: 16px;
+    position: relative; /* Centrado y fluido */
+    text-align: center;
+    display: block;
+    margin: 10px 0;
+    left: -12px;
+    top: -30px;
+  }
+
+  .product-details-list {
+    position: relative; /* Posición fluida */
+    bottom: 48px;
+    right: 5px;
+    margin: 10px;
+    padding: 0;
+    text-align: center; /* Centrar elementos */
+  }
+
+  .product-details-list li {
+    margin: 5px 0; /* Espaciado vertical */
+  }
+
+  .product-details-list a{
+    font-size: 14px;
+  }
+
+  .description-section {
+    position: static; /* Posición fluida */
+    margin: 10px;
+    text-align: justify;
+  }
+
+  .description-title {
+    font-size: 18px; /* Tamaño reducido */
+    text-align: center;
+    position: relative;
+    top: 20px;
+  }
+
+  .description-text {
+    font-size: 14px; 
+    position: relative;
+    top: 15px;
+  }
+
+  .imagenEfectivo{
+    position: relative;
+    bottom: 13px;
+    right: 17px;
+  }
+
+  .imagenMercado{
+    position: relative;
+    bottom: 90px;
+    left: 275px;
+  }
 }

@@ -7,7 +7,6 @@
             "color": "⬜Blanco y 🟧Naranja",
             "codigo": "10024A",
             "precio": 1500,
-            "stock": 20,
             "favorito": true,
             "CategoriaId": 1,
             "SubCategoriaId": 1
@@ -19,7 +18,6 @@
             "color": "🟩Verde",
             "codigo": "10027B",
             "precio": 1600,
-            "stock": 13,
             "favorito": true,
             "CategoriaId": 1 ,
             "SubCategoriaId": 2
@@ -31,7 +29,6 @@
             "color": "⬛Negro",
             "codigo": "10035C",
             "precio": 300,
-            "stock": 35,
             "favorito": true,
             "CategoriaId": 3,
             "SubCategoriaId": 2
@@ -43,7 +40,6 @@
             "color": "🟫Marron y ⬜Blanca",
             "codigo": "10040D",
             "precio": 600,
-            "stock": 10,
             "favorito": false,
             "CategoriaId": 2 ,
             "SubCategoriaId": 3
@@ -55,7 +51,6 @@
             "color": "🩶Gris",
             "codigo": "10041E",
             "precio": 850,
-            "stock": 10,
             "favorito": false,
             "CategoriaId": 2,
             "SubCategoriaId": 4
@@ -68,7 +63,6 @@
             "color": "🟪Morado y⬜Blanco",
             "codigo": "10025B",
             "precio": 1500,
-            "stock": 20,
             "favorito": false,
             "CategoriaId": 1,
             "SubCategoriaId": 1
@@ -80,7 +74,6 @@
             "color": "🟨Amarillo y ⬜Blanco",
             "codigo": "10026C",
             "precio": 1600,
-            "stock": 13,
             "favorito": false,
             "CategoriaId": 1,
             "SubCategoriaId": 2
@@ -92,7 +85,6 @@
             "color": "⬛Negro",
             "codigo": "10036D",
             "precio": 300,
-            "stock": 35,
             "favorito": false,
             "CategoriaId": 3,
             "SubCategoriaId": 2

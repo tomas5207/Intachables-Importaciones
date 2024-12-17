@@ -160,7 +160,6 @@ const Contact = () => {
     align="center"
     className="contact-form-container"
     style={{
-      width: "400px",
       margin: "auto",
       padding: "20px",
       borderRadius: "10px",
