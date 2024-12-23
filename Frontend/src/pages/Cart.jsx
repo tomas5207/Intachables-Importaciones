@@ -23,18 +23,20 @@ const Cart = ({ cartItems, removeFromCart, setCart }) => {
     initMercadoPago('APP_USR-08bc1ba8-ee93-4c2c-8405-cf9efc415eea');
 
     const createPreference = async () => {
-      try {
-        const response = await axios.post('http://localhost:5000/pago/mercado', {
-          ArrayItems: cartItems,
-        });
-        setPreferenceId(response.data.preferenceId);
-      } catch (error) {
-        console.error('Error al crear la preferencia:', error);
+      if (!preferenceId) { // Evitar crear una preferencia si ya existe
+        try {
+          const response = await axios.post('http://localhost:5000/pago/mercado', {
+            ArrayItems: cartItems,
+          });
+          setPreferenceId(response.data.preferenceId);
+        } catch (error) {
+          console.error('Error al crear la preferencia:', error);
+        }
       }
     };
 
     createPreference();
-  }, [cartItems]);
+  }, [cartItems, preferenceId]);
 
   const totalAmount = cartItems.reduce((total, item) => total + item.precio * item.quantity, 0);
 
@@ -121,11 +123,12 @@ const Cart = ({ cartItems, removeFromCart, setCart }) => {
               <Button
                 variant="success"
                 onClick={handlePayInCash}
-                style={{ marginTop: '20px', width: '400px', height: '45px' }}
+                style={{ marginTop: '20px', height: '45px' }}
+                className='btnefectivo'
               >
                 Pagar en efectivo
               </Button>
-              <div>
+              <div className='btnmercado'>
                 <Wallet initialization={{ preferenceId: preferenceId }} />
               </div>
             </>

@@ -1,5 +1,6 @@
 import ImageCarrusel from '../components/ImageCarrusel';
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 const About = () => {
   
@@ -8,8 +9,11 @@ const About = () => {
     return (
       <>
       <ImageCarrusel PageRefrence="Sobre Nosotros" reference="Home/Sobre Nosotros"/>
+      
       <div className="about" style={{width: '50%', height: '250px', borderBottom: '2px solid black'}}>
+      <Link to="/">
           <img style={{width: '100%', height: '100%'}} src="../../public/Logo.jpg"/>
+      </Link>
       </div>
       <p className="about" style={{ textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       Somos una joven empresa uruguaya fundada en 2020, impulsada por una pasión genuina por el bienestar 

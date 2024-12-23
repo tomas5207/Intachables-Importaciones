@@ -140,6 +140,10 @@ button:focus-visible {
   margin: 20px 0;
 }
 
+.btnefectivo{
+  width: 400px;
+}
+
 .pagination button {
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -547,6 +551,17 @@ p.pay{
     padding: 0;
     width: 100%;
     overflow-x: hidden; /* Ocultar el scroll horizontal */
+  }
+
+  .btnefectivo{
+    width: 280px;
+  }
+
+  .form div{
+    width: 80%;
+    position: relative;
+    left: 27px;
+    bottom: 7.5px;
   }
 
   .category-filter.mobile {

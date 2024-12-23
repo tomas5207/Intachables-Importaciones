@@ -51,7 +51,7 @@ const PurchaseComplete = ({ setCart, cartItems }) => {
         Completa este formulario con los siguientes datos para poder recibir tu
         pedido.
       </p>
-      <form>
+      <form className="form">
         <div style={{ marginBottom: "15px" }}>
           <label>Nombre</label>
           <input

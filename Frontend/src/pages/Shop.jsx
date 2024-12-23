@@ -7,23 +7,35 @@ import axios from 'axios';
 
 export const Shop = ({ addToCart }) => {
     const [productsData, setProductsData] = useState([]);
+    const [categoriesData, setCategoriesData] = useState([]); // Nuevo estado para las categorías
     const [filteredData, setFilteredData] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedSubCategories, setSelectedSubCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [showCategoryFilter, setShowCategoryFilter] = useState(false); // Estado para mostrar/ocultar filtro
+    const [showCategoryFilter, setShowCategoryFilter] = useState(false);
     const productsPerPage = 6;
 
     useEffect(() => {
+        // Cargar productos
         axios.get('http://localhost:5000/producto')
             .then(response => {
                 setProductsData(response.data);
-                setFilteredData(response.data); // Inicialmente muestra todos los productos
+                setFilteredData(response.data);
                 console.log("Productos obtenidos:", response.data);
             })
             .catch(error => {
                 console.log("Error al obtener productos:", error);
+            });
+
+        // Cargar categorías
+        axios.get('http://localhost:5000/categoria')
+            .then(response => {
+                setCategoriesData(response.data);
+                console.log("Categorías obtenidas:", response.data);
+            })
+            .catch(error => {
+                console.log("Error al obtener categorías:", error);
             });
     }, []);
 
@@ -46,30 +58,27 @@ export const Shop = ({ addToCart }) => {
     useEffect(() => {
         let filteredProducts = productsData;
 
-        // Filtrar por categorías seleccionadas
         if (selectedCategories.length > 0) {
             filteredProducts = filteredProducts.filter(product =>
                 product.Categorium && selectedCategories.includes(product.Categorium.nombre)
             );
         }
 
-        // Filtrar por subcategorías seleccionadas
         if (selectedSubCategories.length > 0) {
             filteredProducts = filteredProducts.filter(product =>
                 product.SubCategorium && selectedSubCategories.includes(product.SubCategorium.nombre)
             );
         }
 
-        // Filtrar por término de búsqueda
         if (searchTerm) {
             filteredProducts = filteredProducts.filter(product =>
                 product.nombre.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                product.codigo.toLowerCase().includes(searchTerm.toLowerCase()) // Agregado para buscar por código
+                product.codigo.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
 
         setFilteredData(filteredProducts);
-        setCurrentPage(1); // Reiniciar a la primera página si se aplican filtros o búsqueda
+        setCurrentPage(1);
     }, [selectedCategories, selectedSubCategories, searchTerm, productsData]);
 
     const removeFilter = (filterName, type) => {
@@ -80,7 +89,6 @@ export const Shop = ({ addToCart }) => {
         }
     };
 
-    // Calcular los productos actuales para la página
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = filteredData.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -92,7 +100,6 @@ export const Shop = ({ addToCart }) => {
         }
     };
 
-    // Toggle para mostrar/ocultar el filtro en pantallas pequeñas
     const toggleCategoryFilter = () => {
         setShowCategoryFilter(prev => !prev);
     };
@@ -113,33 +120,29 @@ export const Shop = ({ addToCart }) => {
                     </span>
                 ))}
             </div>
-
-            {/* Botón para desplegar filtro de categorías en pantallas pequeñas */}
-            <button 
-                className="category-toggle-button"
-                onClick={toggleCategoryFilter}
-            >
+            <button className="category-toggle-button" onClick={toggleCategoryFilter}>
                 {showCategoryFilter ? 'Ocultar Filtro' : 'Ver Filtro'}
             </button>
-
-            {/* Mostrar el filtro fuera de shop-container solo en móviles */}
             {showCategoryFilter && (
                 <CategoryFilter 
                     onFilterSelect={handleFilterSelect} 
                     className="category-filter-mobile"
                 />
             )}
-            <br/>
+            <br />
             <div className="shop-container">
                 {filteredData.length === 0 ? (
                     <div className="no-products-message">
                         <p>Oops... no hay productos en la tienda</p>
                     </div>
                 ) : (
-                    <ItemListContainer greeting="" productsData={currentProducts} addToCart={addToCart} />
+                    <ItemListContainer 
+                        greeting="" 
+                        productsData={currentProducts} 
+                        addToCart={addToCart} 
+                    />
                 )}
             </div>
-
             {filteredData.length > 0 && (
                 <div className="pagination">
                     <button
