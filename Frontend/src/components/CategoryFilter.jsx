@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
-const CategoryFilter = ({ onFilterSelect, className }) => {
+const CategoryFilter = ({ onFilterSelect, className, onClose }) => {
     const [categories, setCategories] = useState([]);
     const [expandedCategories, setExpandedCategories] = useState({});
-    const [isMobile, setIsMobile] = useState(false); // Estado para saber si es móvil
 
     useEffect(() => {
         axios.get('http://localhost:5000/categoria')
@@ -15,19 +13,6 @@ const CategoryFilter = ({ onFilterSelect, className }) => {
             .catch(error => {
                 console.log('Error al obtener las categorías:', error);
             });
-        
-        // Detectar el tamaño de la pantalla
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 480); // Si el ancho de la pantalla es <= 480px
-        };
-
-        handleResize(); // Llamar una vez al cargar el componente
-        window.addEventListener('resize', handleResize);
-
-        // Limpiar el evento de resize al desmontar el componente
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     }, []);
 
     const toggleSubcategories = (categoryId) => {
@@ -38,8 +23,13 @@ const CategoryFilter = ({ onFilterSelect, className }) => {
     };
 
     return (
-        <Card className={`category-filter ${className || ''}`}>
-            <h3>Categorías</h3>
+        <div className={`category-sidebar ${className || ''}`}>
+            <div className="sidebar-header">
+                <h3>Categorías</h3>
+                <button className="close-button" onClick={onClose}>
+                    ✕
+                </button>
+            </div>
             <ul className="category-list">
                 {categories.map((category) => (
                     <li key={category.id} className="category-item">
@@ -56,7 +46,7 @@ const CategoryFilter = ({ onFilterSelect, className }) => {
                                         toggleSubcategories(category.id);
                                     }}
                                 >
-                                    {expandedCategories[category.id] ? '-' : '+'} 
+                                    {expandedCategories[category.id] ? '-' : '+'}
                                 </button>
                             )}
                         </div>
@@ -78,7 +68,7 @@ const CategoryFilter = ({ onFilterSelect, className }) => {
                     </li>
                 ))}
             </ul>
-        </Card>
+        </div>
     );
 };
 

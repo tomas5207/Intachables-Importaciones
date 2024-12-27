@@ -7,35 +7,22 @@ import axios from 'axios';
 
 export const Shop = ({ addToCart }) => {
     const [productsData, setProductsData] = useState([]);
-    const [categoriesData, setCategoriesData] = useState([]); // Nuevo estado para las categorías
     const [filteredData, setFilteredData] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedSubCategories, setSelectedSubCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [showCategoryFilter, setShowCategoryFilter] = useState(false);
+    const [showCategorySidebar, setShowCategorySidebar] = useState(false);
     const productsPerPage = 6;
 
     useEffect(() => {
-        // Cargar productos
         axios.get('http://localhost:5000/producto')
             .then(response => {
                 setProductsData(response.data);
                 setFilteredData(response.data);
-                console.log("Productos obtenidos:", response.data);
             })
             .catch(error => {
-                console.log("Error al obtener productos:", error);
-            });
-
-        // Cargar categorías
-        axios.get('http://localhost:5000/categoria')
-            .then(response => {
-                setCategoriesData(response.data);
-                console.log("Categorías obtenidas:", response.data);
-            })
-            .catch(error => {
-                console.log("Error al obtener categorías:", error);
+                console.log('Error al obtener productos:', error);
             });
     }, []);
 
@@ -94,18 +81,11 @@ export const Shop = ({ addToCart }) => {
     const currentProducts = filteredData.slice(indexOfFirstProduct, indexOfLastProduct);
     const totalPages = Math.ceil(filteredData.length / productsPerPage);
 
-    const paginate = (pageNumber) => {
-        if (pageNumber >= 1 && pageNumber <= totalPages) {
-            setCurrentPage(pageNumber);
-        }
-    };
-
-    const toggleCategoryFilter = () => {
-        setShowCategoryFilter(prev => !prev);
-    };
-
     return (
         <>
+            {showCategorySidebar && (
+                <div className="overlay" onClick={() => setShowCategorySidebar(false)}></div>
+            )}
             <ImageCarrusel PageRefrence="Tienda" reference="Home/Tienda" />
             <SearchBar onSearch={handleSearch} />
             <div className="selected-filters">
@@ -120,16 +100,14 @@ export const Shop = ({ addToCart }) => {
                     </span>
                 ))}
             </div>
-            <button className="category-toggle-button" onClick={toggleCategoryFilter}>
-                {showCategoryFilter ? 'Ocultar Filtro' : 'Ver Filtro'}
+            <button className="category-toggle-button" onClick={() => setShowCategorySidebar(true)}>
+                Filtros
             </button>
-            {showCategoryFilter && (
-                <CategoryFilter 
-                    onFilterSelect={handleFilterSelect} 
-                    className="category-filter-mobile"
-                />
-            )}
-            <br />
+            <CategoryFilter
+                onFilterSelect={handleFilterSelect}
+                className={showCategorySidebar ? 'visible' : ''}
+                onClose={() => setShowCategorySidebar(false)}
+            />
             <div className="shop-container">
                 {filteredData.length === 0 ? (
                     <div className="no-products-message">
@@ -146,7 +124,7 @@ export const Shop = ({ addToCart }) => {
             {filteredData.length > 0 && (
                 <div className="pagination">
                     <button
-                        onClick={() => paginate(currentPage - 1)}
+                        onClick={() => setCurrentPage(currentPage - 1)}
                         disabled={currentPage === 1}
                     >
                         &laquo; Anterior
@@ -155,13 +133,13 @@ export const Shop = ({ addToCart }) => {
                         <button
                             key={index + 1}
                             className={currentPage === index + 1 ? 'active' : ''}
-                            onClick={() => paginate(index + 1)}
+                            onClick={() => setCurrentPage(index + 1)}
                         >
                             {index + 1}
                         </button>
                     ))}
                     <button
-                        onClick={() => paginate(currentPage + 1)}
+                        onClick={() => setCurrentPage(currentPage + 1)}
                         disabled={currentPage === totalPages}
                     >
                         Siguiente &raquo;

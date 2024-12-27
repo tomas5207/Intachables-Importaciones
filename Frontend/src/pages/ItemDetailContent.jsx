@@ -81,10 +81,8 @@ export const ItemDetailContent = ({ addToCart }) => {
         <li><a>Colores: {productsData.color}</a></li>
       </ul>
 
-      <ul className="description-section">
         <h4 className="description-title">Descripción:</h4>
         <p className="description-text">{productsData.descripción}</p>
-      </ul>
     </>
   );
 };
