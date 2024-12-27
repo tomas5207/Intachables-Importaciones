@@ -239,11 +239,16 @@ button:focus-visible {
   color: white;
 }
 
+
 .table-container {
   max-height: 400px; /* Ajusta según la altura deseada */
   overflow-y: auto; /* Habilita el scroll vertical */
   border: 1px solid #ddd; /* Bordes opcionales */
   border-radius: 5px;
+}
+
+.admin-products{
+  width: 90%;
 }
 
 
