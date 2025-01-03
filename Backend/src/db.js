@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
-const { DB_USER, DB_PASSWORD, HOST, PORT, DB_NAME, DATABASE_URL } = process.env;
+const { DB_USER, DB_PASSWORD, HOST, PORT, DB_NAME} = process.env;
 const Product_Model = require('./models/Producto');
 const User_Model = require('./models/User');
 const Category_Model = require('./models/Categoria');
@@ -8,7 +8,7 @@ const SubCategory_Model = require('./models/SubCategoria');
 
 //`postgres://${DB_USER}:${DB_PASSWORD}@${HOST}:${PORT}/${DB_NAME}`
 
-const database = new Sequelize(DATABASE_URL, {
+const database = new Sequelize( "postgresql://postgres:WlTEMQNauUgMqutzxnmHcuubkMvRhTfT@autorack.proxy.rlwy.net:28353/railway", {
     logging: false,
     native: false,
     dialect: 'postgres',
