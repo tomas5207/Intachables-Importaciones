@@ -63,7 +63,7 @@ export const Home = ({ addToCart }) => {
                     de querer contactarnos puede revisar nuestras redes sociales, llamar al número correspondiente en la página, enviar un mensaje por WhatsApp,
                     o contactarnos por correo electrónico en la sección de <strong> "Contacto" </strong>. 
                     <img 
-                        src="/perro.jpg"
+                        src="/perro.JPG"
                         alt="Imagen de perro" 
                         style={{
                             width: "25%",
