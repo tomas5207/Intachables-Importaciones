@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+        {"source": "/(.*)", "destination": "/index.html"},
+        {"source": "/shop/(.*)", "destination": "/shop"},
+        {"source": "/about/(.*)", "destination": "/about"},
+        {"source": "/payform/(.*)", "destination": "/payform"},
+        {"source": "/cart/(.*)", "destination": "/cart"},
+        {"source": "/contact/(.*)", "destination": "/contact"}
+    ]
+}
