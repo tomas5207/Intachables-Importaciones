@@ -1,4 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
+import carrusel1 from '../../public/carusel1.jpg';
+import carrusel2 from '../../public/carusel2.jpg';
+import carrusel3 from '../../public/carusel3.jpg';
 
 const ImageCarrusel =({PageRefrence, reference}) => {
     return (
@@ -6,7 +9,7 @@ const ImageCarrusel =({PageRefrence, reference}) => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="../../public/carusel1.jpg" // Cambia la ruta a la ubicación real de tu imagen
+              src={carrusel1} // Cambia la ruta a la ubicación real de tu imagen
               alt="First slide"
               style={{ height: '400px' }}
             />
@@ -18,7 +21,7 @@ const ImageCarrusel =({PageRefrence, reference}) => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="../../public/carusel2.jpg" // Cambia la ruta a la ubicación real de tu imagen
+              src={carrusel2} // Cambia la ruta a la ubicación real de tu imagen
               alt="Second slide"
               style={{ height: '400px'}}
             />
@@ -30,7 +33,7 @@ const ImageCarrusel =({PageRefrence, reference}) => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="../../public/carusel3.jpg" // Cambia la ruta a la ubicación real de tu imagen
+              src={carrusel3} // Cambia la ruta a la ubicación real de tu imagen
               alt="Third slide"
               style={{ height: '400px'}}
             />
