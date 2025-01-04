@@ -16,7 +16,7 @@ export const Shop = ({ addToCart }) => {
     const productsPerPage = 6;
 
     useEffect(() => {
-        axios.get('http://localhost:5000/producto')
+        axios.get('https://intachables-importaciones-production.up.railway.app/producto')
             .then(response => {
                 setProductsData(response.data);
                 setFilteredData(response.data);

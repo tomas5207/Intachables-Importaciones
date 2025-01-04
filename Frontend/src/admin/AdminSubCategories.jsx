@@ -14,7 +14,7 @@ const AdminSubCategories = () => {
 
   const fetchSubCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/subcategoria");
+      const response = await axios.get("https://intachables-importaciones-production.up.railway.app/subcategoria");
       setSubCategories(response.data);
     } catch (err) {
       console.error("Error al obtener las subcategorías:", err);
@@ -35,7 +35,7 @@ const AdminSubCategories = () => {
   const handleDeleteSubCategory = async (id) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar esta subcategoría?")) {
       try {
-        await axios.delete(`http://localhost:5000/subcategoria/${id}`);
+        await axios.delete(`https://intachables-importaciones-production.up.railway.app/subcategoria/${id}`);
         setSubCategories(subCategories.filter((sub) => sub.id !== id));
       } catch (err) {
         console.error("Error al eliminar la subcategoría:", err);
@@ -47,9 +47,9 @@ const AdminSubCategories = () => {
   const handleSaveSubCategory = async (subCategory) => {
     try {
       if (subCategory.id) {
-        await axios.put(`http://localhost:5000/subcategoria/${subCategory.id}`, subCategory);
+        await axios.put(`https://intachables-importaciones-production.up.railway.app/subcategoria/${subCategory.id}`, subCategory);
       } else {
-        await axios.post("http://localhost:5000/subcategoria", subCategory);
+        await axios.post("https://intachables-importaciones-production.up.railway.app/subcategoria", subCategory);
       }
       fetchSubCategories();
       setShowForm(false);

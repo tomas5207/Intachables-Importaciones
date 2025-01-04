@@ -15,7 +15,7 @@ const AdminCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/categoria");
+      const response = await axios.get("https://intachables-importaciones-production.up.railway.app/categoria");
       setCategories(response.data);
       console.log(response.data);
     } catch (err) {
@@ -28,7 +28,7 @@ const AdminCategories = () => {
   const handleDeleteCategory = async (id) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar esta categoría?")) {
       try {
-        await axios.delete(`http://localhost:5000/categoria/${id}`);
+        await axios.delete(`https://intachables-importaciones-production.up.railway.app/categoria/${id}`);
         setCategories(categories.filter((category) => category.id !== id));
       } catch (err) {
         console.error("Error al eliminar la categoría:", err);
@@ -54,10 +54,10 @@ const AdminCategories = () => {
     try {
       if (category.id) {
         // Editar categoría
-        await axios.put(`http://localhost:5000/categoria/${category.id}`, category);
+        await axios.put(`https://intachables-importaciones-production.up.railway.app/categoria/${category.id}`, category);
       } else {
         // Crear nueva categoría
-        await axios.post("http://localhost:5000/categoria", category);
+        await axios.post("https://intachables-importaciones-production.up.railway.app/categoria", category);
       }
       fetchCategories();
       setShowForm(false);

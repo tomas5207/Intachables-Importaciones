@@ -23,7 +23,7 @@ const CategoryForm = ({ category, onSave, onCancel }) => {
 
   const fetchSubcategories = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/subcategoria");
+      const response = await axios.get("https://intachables-importaciones-production.up.railway.app/subcategoria");
       setAvailableSubcategories(response.data);
     } catch (error) {
       console.error("Error al cargar las subcategorías:", error);

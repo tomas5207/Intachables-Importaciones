@@ -12,7 +12,7 @@ export const ItemDetailContent = ({ addToCart }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/producto/${id}`)
+    axios.get(`https://intachables-importaciones-production.up.railway.app/producto/${id}`)
       .then(response => {
         const producto = response.data;
         setProductsData(producto);
@@ -25,7 +25,7 @@ export const ItemDetailContent = ({ addToCart }) => {
 
   useEffect(() => {
     if (productsData.CategoriaId) {
-      axios.get(`http://localhost:5000/categoria/${productsData.CategoriaId}`)
+      axios.get(`https://intachables-importaciones-production.up.railway.app/categoria/${productsData.CategoriaId}`)
         .then(response => {
           setCategoriaNombre(response.data.nombre);
           console.log("Nombre de la categoría:", response.data.nombre);
@@ -38,7 +38,7 @@ export const ItemDetailContent = ({ addToCart }) => {
 
   useEffect(() => {
     if (productsData.SubCategoriaId) {
-      axios.get(`http://localhost:5000/subcategoria/${productsData.SubCategoriaId}`)
+      axios.get(`https://intachables-importaciones-production.up.railway.app/subcategoria/${productsData.SubCategoriaId}`)
         .then(response => {
           setSubcategoriaNombre(response.data.nombre);
           console.log("Nombre de la subcategoría:", response.data.nombre);

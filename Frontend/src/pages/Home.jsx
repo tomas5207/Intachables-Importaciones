@@ -10,7 +10,7 @@ export const Home = ({ addToCart }) => {
 
     useEffect(() => {
         // Cargar productos favoritos
-        axios.get('http://localhost:5000/producto')
+        axios.get('https://intachables-importaciones-production.up.railway.app/producto')
             .then(response => {
                 const favoritos = response.data.filter(producto => producto.favorito === true);
                 setProductsData(favoritos);
@@ -20,7 +20,7 @@ export const Home = ({ addToCart }) => {
             });
 
         // Cargar categorías
-        axios.get('http://localhost:5000/categoria')
+        axios.get('https://intachables-importaciones-production.up.railway.app/categoria')
             .then(response => {
                 setCategoriesData(response.data);
             })

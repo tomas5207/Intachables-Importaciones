@@ -39,7 +39,7 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/categoria");
+        const response = await axios.get("https://intachables-importaciones-production.up.railway.app/categoria");
         setCategories(response.data);
       } catch (error) {
         console.error("Error al cargar las categorías:", error);
@@ -48,7 +48,7 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
 
     const fetchSubCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/subcategoria");
+        const response = await axios.get("https://intachables-importaciones-production.up.railway.app/subcategoria");
         setSubCategories(response.data);
       } catch (error) {
         console.error("Error al cargar las subcategorías:", error);
@@ -85,12 +85,12 @@ const ProductForm = ({ onCancel, productToEdit = null, onFormSubmit }) => {
     e.preventDefault();
     try {
       if (productToEdit) {
-        await axios.put(`http://localhost:5000/producto/${productToEdit.id}`, formData, {
+        await axios.put(`https://intachables-importaciones-production.up.railway.app/producto/${productToEdit.id}`, formData, {
           headers: { "Content-Type": "application/json" },
         });
         alert("Producto modificado exitosamente");
       } else {
-        await axios.post("http://localhost:5000/producto", formData, {
+        await axios.post("https://intachables-importaciones-production.up.railway.app/producto", formData, {
           headers: { "Content-Type": "application/json" },
         });
         alert("Producto creado exitosamente");

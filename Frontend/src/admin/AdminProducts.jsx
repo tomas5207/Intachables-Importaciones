@@ -15,7 +15,7 @@ const AdminProducts = () => {
   // Función para obtener productos desde el backend
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/producto");
+      const response = await axios.get("https://intachables-importaciones-production.up.railway.app/producto");
       setProducts(response.data);
       console.log(response.data);
     } catch (err) {
@@ -34,7 +34,7 @@ const AdminProducts = () => {
       )
     ) {
       try {
-        await axios.delete(`http://localhost:5000/producto/${id}`);
+        await axios.delete(`https://intachables-importaciones-production.up.railway.app/producto/${id}`);
         alert("Producto eliminado correctamente");
         setProducts(products.filter((product) => product.id !== id));
       } catch (err) {
@@ -47,7 +47,7 @@ const AdminProducts = () => {
   // Función para cambiar el estado de favorito
   const toggleFavorite = async (id, currentFavorite) => {
     try {
-      const response = await axios.put(`http://localhost:5000/favorito/${id}`, {
+      const response = await axios.put(`https://intachables-importaciones-production.up.railway.app/favorito/${id}`, {
         favorito: !currentFavorite,
       });
       // Actualizar la lista de productos con el nuevo valor de favorito
