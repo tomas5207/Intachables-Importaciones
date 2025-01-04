@@ -3,6 +3,8 @@ import Card from 'react-bootstrap/Card';
 import ItemListContainer from '../components/ItemListContainer';
 import ImageCarrusel from '../components/ImageCarrusel';
 import axios from 'axios';
+import gato from '../../public/gato.jpg';
+import perro from '../../public/perro.JPG';
 
 export const Home = ({ addToCart }) => {
     const [productsData, setProductsData] = useState([]);
@@ -40,7 +42,7 @@ export const Home = ({ addToCart }) => {
             <Card style={{ color: "white", width: "100%", padding: "20px", overflow: "hidden" }} className='cat-card'>
                 <p style={{ fontSize: "20px", textAlign: "justify" }}>
                     <img 
-                        src="../../public/gato.jpg" 
+                        src={gato} 
                         alt="Imagen de gato" 
                         style={{
                             width: "25%",
@@ -63,7 +65,7 @@ export const Home = ({ addToCart }) => {
                     de querer contactarnos puede revisar nuestras redes sociales, llamar al número correspondiente en la página, enviar un mensaje por WhatsApp,
                     o contactarnos por correo electrónico en la sección de <strong> "Contacto" </strong>. 
                     <img 
-                        src="../../public/perro.JPG" 
+                        src={perro}
                         alt="Imagen de perro" 
                         style={{
                             width: "25%",

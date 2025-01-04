@@ -1,5 +1,8 @@
 import ImageCarrusel from '../components/ImageCarrusel';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Tarjeta from '../../public/Tarjeta.png';
+import Mercado from '../../public/mercadoPago.png';
+import Efectivo from '../../public/efectivo.png';
 
 const Pay = () => {
   
@@ -10,7 +13,7 @@ const Pay = () => {
       <ImageCarrusel PageRefrence="Formas de Pago" reference="Home/Formas de Pago"/>
       <p className="pay" style={{ textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       <img 
-          src="../../public/Tarjeta.png" 
+          src={Tarjeta} 
           alt="Imagen tarjeta" 
           style={{ width: "20%", height: "180px", float: "left", marginLeft: "15px", position: "relative", bottom: "50px", right: "12px"}}
         />
@@ -21,7 +24,7 @@ const Pay = () => {
       </p>
       <p className="pay" style={{ textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       <img 
-          src="../../public/mercadoPago.png" 
+          src={Mercado}
           alt="Imagen tarjeta" 
           style={{ width: "20%", height: "185px", float: "right", marginRight: "15px", position: "relative", bottom: "20px", left: "12px"}}
         />
@@ -35,7 +38,7 @@ const Pay = () => {
       <br/>
       <p className="pay" style={{ textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
       <img 
-          src="../../public/efectivo.png" 
+          src={Efectivo} 
           alt="Imagen tarjeta" 
           style={{ width: "20%", height: "180px", float: "left", marginLeft: "15px"}}
         />

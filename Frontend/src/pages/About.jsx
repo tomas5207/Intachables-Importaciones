@@ -1,6 +1,7 @@
 import ImageCarrusel from '../components/ImageCarrusel';
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import Logo from '../../public/Logo.jpg';
 
 const About = () => {
   
@@ -12,7 +13,7 @@ const About = () => {
       
       <div className="about" style={{width: '50%', height: '250px', borderBottom: '2px solid black'}}>
       <Link to="/">
-          <img style={{width: '100%', height: '100%'}} src="../../public/Logo.jpg"/>
+          <img style={{width: '100%', height: '100%'}} src={Logo}/>
       </Link>
       </div>
       <p className="about" style={{ textAlign: "justify", color: "#11456e", marginTop: "20px"}}>
