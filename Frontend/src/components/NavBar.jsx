@@ -3,7 +3,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import CartWidget from './CartWidget';
-import Logo from '../../public/Logo.jpg';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function NavBar() {
@@ -17,7 +16,7 @@ function NavBar() {
             <Container fluid>
                 <Navbar.Brand href="/">
                     <img
-                        src={Logo}
+                        src="/Logo.jpg"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
