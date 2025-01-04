@@ -4,7 +4,7 @@ import ItemListContainer from '../components/ItemListContainer';
 import ImageCarrusel from '../components/ImageCarrusel';
 import axios from 'axios';
 import gato from '../../public/gato.jpg';
-import perro from '../../public/perro.JPG';
+import perro from '../../public/perro.jpg';
 
 export const Home = ({ addToCart }) => {
     const [productsData, setProductsData] = useState([]);
