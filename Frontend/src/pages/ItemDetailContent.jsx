@@ -60,10 +60,10 @@ export const ItemDetailContent = ({ addToCart }) => {
       </Card>
 
       <Card className="pay-banner-card payBanner">
-        <Card.Img src="../../public/efectivo.png" className='imagenEfectivo'/>
+        <Card.Img src="/efectivo.png" className='imagenEfectivo'/>
         <span className="pay-text-left">Paga en efectivo</span>
         <span className="pay-text-middle">O</span>
-        <Card.Img src="../../public/mercadoPago.png" className='imagenMercado'/>
+        <Card.Img src="/mercadoPago.png" className='imagenMercado'/>
         <span className="pay-text-right">con MercadoPago</span>
       </Card>
 
