@@ -25,7 +25,7 @@ const Cart = ({ cartItems, removeFromCart, setCart }) => {
     const createPreference = async () => {
       if (!preferenceId) { // Evitar crear una preferencia si ya existe
         try {
-          const response = await axios.post('http://localhost:5000/pago/mercado', {
+          const response = await axios.post('https://intachables-importaciones-production.up.railway.app/pago/mercado', {
             ArrayItems: cartItems,
           });
           setPreferenceId(response.data.preferenceId);
@@ -46,7 +46,7 @@ const Cart = ({ cartItems, removeFromCart, setCart }) => {
 
   const confirmCashPayment = async () => {
     try {
-      await axios.post('http://localhost:5000/pago/efectivo', {
+      await axios.post('https://intachables-importaciones-production.up.railway.app/pago/efectivo', {
         items: cartItems,
         total: totalAmount,
         nombreCliente: userData.name,
