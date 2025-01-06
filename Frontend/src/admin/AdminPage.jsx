@@ -12,44 +12,44 @@ const AdminPage = () => {
                 <li>Agregar: Añadir un nuevo elemento a la página para que todo el mundo lo vea y pueda comprarlo</li>
                 <br/>
                 <p>Paso 1:</p>
-                <img src="./public/Crear 1.png" alt="Crear1" className="AdminImage"/>
+                <img src="/Crear 1.png" alt="Crear1" className="AdminImage"/>
                 <br/>
                 <br/>
                 <p>Paso 2:</p>
-                <img src="./public/Crear 2.png" alt="Crear2" className="AdminImage"/>
+                <img src="/Crear 2.png" alt="Crear2" className="AdminImage"/>
                 <br/>
                 <br/>
                 <p>Paso 3:</p>
-                <img src="./public/Crear 3.png" alt="Crear3" className="AdminImage"/>
+                <img src="/Crear 3.png" alt="Crear3" className="AdminImage"/>
                 <br/>
                 <br/>
                 <li>Modificar: Modificar un elemento existente en la página al cual quieras ya sea modificar algún dato en especifico o todo en general</li>
                 <br/>
                 <p>Paso 1:</p>
-                <img src="./public/Modificar 1.png" alt="Modificar1" className="AdminImage"/>
+                <img src="/Modificar 1.png" alt="Modificar1" className="AdminImage"/>
                 <br/>
                 <br/>
                 <p>Paso 2:</p>
-                <img src="./public/Modificar 2.png" alt="Modificar2" className="AdminImage"/>
+                <img src="/Modificar 2.png" alt="Modificar2" className="AdminImage"/>
                 <br/>
                 <br/>
                 <p>Paso 3:</p>
-                <img src="./public/Modificar 3.png" alt="Modificar3"  className="AdminImage"/>
+                <img src="/Modificar 3.png" alt="Modificar3"  className="AdminImage"/>
                 <br/>
                 <li>Eliminar: Eliminar un elemento existente en la página en caso de que ya no lo vendas o se haya agotado y no quieras mostrarlo al público</li>
                 <p>Paso 1:</p>
-                <img src="./public/Eliminar 1.png" alt="Eliminar1" className="AdminImage"/>
+                <img src="/Eliminar 1.png" alt="Eliminar1" className="AdminImage"/>
                 <br/>
                 <br/>
                 <p>Paso 2:</p>
-                <img src="./public/Eliminar 2.png" alt="Eliminar2" className="AdminImage"/>
+                <img src="/Eliminar 2.png" alt="Eliminar2" className="AdminImage"/>
                 <br/>
                 <br/>
                 <p>Paso 3:</p>
-                <img src="./public/Eliminar 3.png" alt="Eliminar3" className="AdminImage"/>
+                <img src="/Eliminar 3.png" alt="Eliminar3" className="AdminImage"/>
                 <br/>
                 <li>Favorito: <strong>Función exclusiva para productos</strong>. Esto sirve nomas para que decidas que productos mostrar en <strong>Home</strong></li>
-                <img src="./public/Favorito.png" alt="Favorito" className="ImagenFavorita"/>
+                <img src="/Favorito.png" alt="Favorito" className="ImagenFavorita"/>
             </ul>
         </div>
     );
