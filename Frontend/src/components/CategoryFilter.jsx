@@ -6,7 +6,7 @@ const CategoryFilter = ({ onFilterSelect, className, onClose }) => {
     const [expandedCategories, setExpandedCategories] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:5000/categoria')
+        axios.get('https://intachables-importaciones-production.up.railway.app/categoria')
             .then(response => {
                 setCategories(response.data);
             })
