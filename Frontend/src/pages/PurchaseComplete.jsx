@@ -15,7 +15,7 @@ const PurchaseComplete = ({ setCart, cartItems }) => {
   const handleAccept = async () => {
     try {
       // Enviar correo
-      await axios.post("http://localhost:5000/pago/email", {
+      await axios.post("https://intachables-importaciones-production.up.railway.app/pago/email", {
         items: cartItems,
         nombreCliente: userData.name,
         direccionCliente: userData.address,
