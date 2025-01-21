@@ -36,9 +36,9 @@ const pagoMercadoPago = async (req, res) => {
         };
       }),
       back_urls: {
-        success: "http://localhost:5173/paymentSuccess",
-        failure: "http://localhost:5173",
-        pending: "http://localhost:5173",
+        success: "https://intachables-importaciones.vercel.app/paymentSuccess",
+        failure: "https://intachables-importaciones.vercel.app",
+        pending: "https://intachables-importaciones.vercel.app",
       },
       auto_return: "approved"
     };
