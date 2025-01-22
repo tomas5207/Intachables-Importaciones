@@ -768,15 +768,16 @@ p.pay{
 
   /* Modificar el tamaño de las cards para que haya dos por fila */
   .outer-card, .inner-card {
-    width: 50%; /* Ajustar el tamaño de las tarjetas */
+    width: 100%; /* Las tarjetas ocupan todo el ancho disponible inicialmente */
     height: auto; /* Ajustar la altura según el contenido */
-    margin: 10px 0; /* Espaciado entre las tarjetas */
   }
-
+  
   .outer-card {
-    width: 40%; /* Dos cards por fila */
+    width: 47.3%; 
+    position: relative;
+    left: -10px;
   }
-
+  
   .inner-card {
     width: 50%; 
   }
@@ -804,8 +805,8 @@ p.pay{
   }
 
   .card-img-top{
-    width: 60px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 
   .card-body{

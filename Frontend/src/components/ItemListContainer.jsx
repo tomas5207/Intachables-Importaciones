@@ -11,7 +11,7 @@ const ItemListContainer = ({className ,greeting, productsData, addToCart }) => {
                     productsData.map(product => {
                         return (
                             <Card className="outer-card" key={product.id} style={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "transparent"}}>
-                            <Card text="info" className="inner-card" style={{  display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "white", position: "relative", bottom: "8.5px" }}>
+
                                 <Link to={`/producto/${product.id}`}>
                                     <Card.Img variant="top" style={{  objectFit: "contain" }} src={product.imagen} />
                                 </Link>
@@ -19,7 +19,7 @@ const ItemListContainer = ({className ,greeting, productsData, addToCart }) => {
                                     <Card.Title style={{ color: "black" }} className='pNombre'>{product.nombre}</Card.Title>
                                     <div style={{ color: "black" }} className='pPrecio'>$ {product.precio}</div>
                                 </Card.Body>
-                            </Card>
+                            
                             <AddToCartButton product={product} addToCart={addToCart} />
                         </Card>                        
                         )
