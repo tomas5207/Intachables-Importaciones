@@ -6,7 +6,7 @@ const ItemListContainer = ({className ,greeting, productsData, addToCart }) => {
     return (
         <div style={{ fontWeight: "bold", textAlign: "center", color: "#11456e" }}>
             <div style={{fontSize: "3rem"}} className="greeting">{greeting}</div>
-            <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px" , marginBottom: "150px"}}>
+            <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "10px" , marginBottom: "150px"}}>
                 {
                     productsData.map(product => {
                         return (

@@ -783,11 +783,11 @@ p.pay{
   }
 
   .pNombre{
-    font-size: 15px !important;
+    font-size: 17px !important;
   }
 
   .pPrecio{
-    font-size: 15px !important;
+    font-size: 20px !important;
   }
 
   .stockButton{
@@ -797,16 +797,19 @@ p.pay{
   }
 
   .addButton{
-    width: 80px;
+    width: 120px;
     height: 60px;
     position: relative;
-    left: -5px;
+    left: -12px;
     font-size: 12px;
   }
 
   .card-img-top{
-    width: 150px;
-    height: 150px;
+    width: 150%;
+    height: 120%;
+    position: relative;
+    left: -28.5px;
+    top: -15px;
   }
 
   .card-body{
