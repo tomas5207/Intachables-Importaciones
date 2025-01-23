@@ -1,16 +1,3 @@
 {
-    "subcategoria": [
-        {
-            "nombre": "Perros"
-        },
-        {
-            "nombre": "Gatos"
-        },
-        {
-            "nombre": "Pequeñas"
-        },
-        {
-            "nombre": "Medianas"
-        }
-    ]
+    "subcategoria": []
 }

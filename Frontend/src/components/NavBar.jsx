@@ -9,7 +9,7 @@ function NavBar() {
     const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
 
     // Determinar si el usuario actual es Admin
-    const isAdmin = isAuthenticated && user?.email === 'jorcintomas@gmail.com';
+    const isAdmin = isAuthenticated && user?.email === 'intachablesimportaciones@gmail.com';
 
     return (
         <Navbar expand="lg" style={{ backgroundColor: '#11456e' }} className='navbar' collapseOnSelect>

@@ -20,7 +20,7 @@ const Cart = ({ cartItems, removeFromCart, setCart }) => {
   });
 
   useEffect(() => {
-    initMercadoPago('APP_USR-08bc1ba8-ee93-4c2c-8405-cf9efc415eea');
+    initMercadoPago('APP_USR-2a6f383b-5eb6-45af-b217-5d847935bf9a');
 
     const createPreference = async () => {
       if (!preferenceId) { // Evitar crear una preferencia si ya existe

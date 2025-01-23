@@ -48,7 +48,7 @@ const pagoEfectivo = async (req, res) => {
     // Enviar el correo
     await transporter.sendMail({
       from: 'petpalacepf@gmail.com',
-      to: 'jorcintomas@gmail.com',
+      to: 'intachablesimportaciones@gmail.com',
       subject: 'Nueva compra en efectivo',
       html: mensajeHTML, // Usa `html` en lugar de `text` para enviar contenido HTML
     });

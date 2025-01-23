@@ -1,16 +1,3 @@
 {
-    "categoria": [
-        {
-            "nombre": "Comida",
-            "subcategorias": ["Gatos", "Perros"]
-        },
-        {
-            "nombre": "Cama",
-            "subcategorias": ["Pequeñas", "Medianas"]
-        },
-        {
-            "nombre": "Juguetes",
-            "subcategorias": ["Gatos", "Perros"]
-        }
-    ]
+    "categoria": []
 }

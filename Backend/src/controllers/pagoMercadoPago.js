@@ -2,7 +2,7 @@ const { MercadoPagoConfig, Preference } = require('mercadopago');
 
 // Step 1: Inicializa el cliente de Mercado Pago
 const mercadoPago = new MercadoPagoConfig({
-  accessToken: 'APP_USR-4909339683798058-112516-bd5c23dce5975b0c25ce16018bc33b94-2118847692',
+  accessToken: 'APP_USR-3806456479453687-012214-590b39b9a5c8b4752d907c155ec33d8c-24338386',
   sandbox: true // Reemplaza con tu token real
 });
 

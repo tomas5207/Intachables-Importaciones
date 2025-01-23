@@ -42,7 +42,7 @@ const sendMercadoPagoEmail = async (req, res) => {
       host: "smtp.gmail.com",
       port: 587,
       auth: {
-        user: "petpalacepf@gmail.com",
+        user: "intachablesimportaciones@gmail.com",
         pass: "emvouodkhkpilkti",
       },
       tls: {
