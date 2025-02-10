@@ -69,6 +69,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 150vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -95,6 +96,24 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.footer{
+  background-color: #11456e;
+  background-image: url("https://www.increibles.com.uy/wp-content/uploads/2023/07/pie-2.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  bottom: -20px;
+  width: 100%;
+  position: relative;
+  right:190px
+}
+
+.navbar{
+  position: relative;
+  right: 191px;
+}
 /* styles.css o el archivo CSS correspondiente */
 
 .dog-card{
@@ -603,6 +622,7 @@ p.pay{
 }
 
 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -674,21 +694,21 @@ p.pay{
 }
 
   .navbar{
-    width: 140%;
+    width: 190%;
   }
-
+  
   .navbar-nav .nav-link {
     font-size: 14px;
     width: 50%;
     position: relative;
-    left: 200px;
+    left: 340px;
   }
 
   .navbar-brand img {
     width: 25px;
     height: 25px;
     position: relative;
-    left: 150px;
+    left: 340px;
     top: 4px;
   }
 
@@ -698,7 +718,7 @@ p.pay{
 
   .d-flex.align-items-center{
     position: relative;
-    left: 65px;
+    left: 262px;
   }
 
   .d-flex.align-items-center.navbar-nav{
@@ -707,7 +727,7 @@ p.pay{
 
   .cart-widget {
     position: relative;
-    left: 420px;
+    left: 580px;
     bottom: 35px;
   }
 
@@ -740,10 +760,14 @@ p.pay{
     width: 140%;
   }
 
+  .footer{
+    width: 140%;
+  }
+
   .container{
     width: 100px;
     position: relative;
-    left: 70px;
+    left: 157px;
   }
 
   .container a{

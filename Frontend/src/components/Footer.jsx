@@ -6,17 +6,7 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa';
 const Footer = () => {
   return (
     <Card.Footer
-      style={{
-        backgroundColor: '#11456e',
-        backgroundImage: 'url("https://www.increibles.com.uy/wp-content/uploads/2023/07/pie-2.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        color: 'white',
-        padding: '20px 0',
-        textAlign: 'center',
-        bottom: 0,
-        width: '100%',
-      }}
+    className="footer"
     >
       <Container className='container'>
         <Row>

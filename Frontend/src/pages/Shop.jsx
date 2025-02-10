@@ -101,7 +101,7 @@ export const Shop = ({ addToCart }) => {
                 ))}
             </div>
             <button className="category-toggle-button" onClick={() => setShowCategorySidebar(true)}>
-                Filtros
+                Ver Categorías
             </button>
             <CategoryFilter
                 onFilterSelect={handleFilterSelect}
