@@ -54,7 +54,7 @@ const CategoryFilter = ({ onFilterSelect, className, onClose }) => {
                             <ul className="subcategory-list">
                                 {category.SubCategoria.map((subcategory) => (
                                     <li key={subcategory.id}>
-                                        <a
+                                       <span>•</span> <a
                                             className="subcategory-button"
                                             onClick={() => onFilterSelect(subcategory.nombre, 'subcategory')}
                                             style={{ color: 'white' }}

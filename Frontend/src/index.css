@@ -408,6 +408,20 @@ button:focus-visible {
   margin: 1rem;
 }
 
+.btnGoShop{
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  margin: 1rem;
+  padding: 10px;
+  display: block;
+  position: relative;
+  bottom: 80px;
+}
+
 .category-toggle-button:hover {
   background-color: #0056b3;
 }
@@ -671,11 +685,11 @@ p.pay{
   .category-list.mobile-list {
     display: block;
   }
-
   .category-name {
     display: flex;
     justify-content: space-between;
     margin-left: 10px;
+    font-size: 18px;
 }
 
 .expand-button {
@@ -691,6 +705,10 @@ p.pay{
 .subcategory-item {
     margin: 0.5rem 0;
     cursor: pointer;
+}
+
+.subcategory-button{
+  font-size: 16px;
 }
 
   .navbar{
@@ -859,7 +877,7 @@ p.pay{
 
   .expand-button{
     position: relative;
-    right: 3px;
+    right: 5px;
     bottom: 1px;
   }
 

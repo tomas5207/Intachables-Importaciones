@@ -10,7 +10,7 @@ const SearchBar = ({ onSearch }) => {
         <div className="search-bar">
             <input
                 type="text"
-                placeholder="Buscar producto..."
+                placeholder="Buscar..."
                 onChange={handleInputChange}
                 className="search-input"
             />

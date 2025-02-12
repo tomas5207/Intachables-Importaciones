@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import ItemListContainer from '../components/ItemListContainer';
 import ImageCarrusel from '../components/ImageCarrusel';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const Home = ({ addToCart }) => {
     const [productsData, setProductsData] = useState([]);
@@ -33,10 +34,13 @@ export const Home = ({ addToCart }) => {
         <>
             <ImageCarrusel PageRefrence="Inicio" reference="" />
             <ItemListContainer 
-                greeting="Productos destacados de la semana:" 
+                greeting="Ofertas:" 
                 productsData={productsData} 
                 addToCart={addToCart} 
             />
+            <Link to="/shop">
+            <button className='btnGoShop'>Ir a la Tienda</button>
+            </Link>
             <Card style={{ color: "white", width: "100%", padding: "20px", overflow: "hidden" }} className='cat-card'>
                 <p style={{ fontSize: "20px", textAlign: "justify" }}>
                     <img 
