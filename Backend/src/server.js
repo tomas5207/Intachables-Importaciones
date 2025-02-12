@@ -16,8 +16,8 @@ const corsOptions = {
 
 server.use(morgan("dev"));
 server.use(cors(corsOptions)); 
-server.use(express.json());
-
+server.use(express.json({ limit: '100mb' }));
+server.use(express.urlencoded({ limit: '100mb', extended: true }));
 server.use(router);
 
 module.exports = server;
