@@ -8,14 +8,15 @@ const server = express();
 
 
 const corsOptions = {
-    origin: "*",
+    origin: "https://intachables.com", // Cambia "*" por tu dominio
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 200,
 };
 
 server.use(morgan("dev"));
+server.use(cors(corsOptions)); 
 server.use(express.json());
-server.use(cors(corsOptions));
 
 server.use(router);
 
