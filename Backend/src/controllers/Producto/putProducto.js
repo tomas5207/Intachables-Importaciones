@@ -1,8 +1,8 @@
 const { Producto, Categoria, SubCategoria } = require('../../db');
 
 const putProducto = async (req, res) => {
-    const { id } = req.params; // ID del producto a actualizar
-    const { nombre, imagen , descripción , color , codigo ,precio, favorito,CategoriaId, SubCategoriaId } = req.body;
+    const { id } = req.params;
+    const { nombre, imagen, descripción, codigo, precio, descuento, porcentaje_descuento, CategoriaId, SubCategoriaId } = req.body;
 
     try {
         const producto = await Producto.findByPk(id);
@@ -30,15 +30,18 @@ const putProducto = async (req, res) => {
             producto.CategoriaId = CategoriaId; // Cambiar la categoría asociada
         }
 
+        // Si el descuento es false, poner porcentaje_descuento en null
+        const porcentajeDescuentoFinal = descuento ? porcentaje_descuento : null;
+
         // Actualizar los campos del producto
         await producto.update({
             nombre,
             imagen,
             descripción,
-            color,
             codigo,
             precio,
-            favorito,
+            descuento,
+            porcentaje_descuento: porcentajeDescuentoFinal,
             CategoriaId,
             SubCategoriaId,
         });

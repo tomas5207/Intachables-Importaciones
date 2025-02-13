@@ -6,9 +6,8 @@ const User_Model = require('./models/User');
 const Category_Model = require('./models/Categoria');
 const SubCategory_Model = require('./models/SubCategoria');
 
-//`postgres://${DB_USER}:${DB_PASSWORD}@${HOST}:${PORT}/${DB_NAME}`
-
-const database = new Sequelize( "postgresql://postgres:WlTEMQNauUgMqutzxnmHcuubkMvRhTfT@autorack.proxy.rlwy.net:28353/railway", {
+// Conexión a la base de datos
+const database = new Sequelize("postgresql://postgres:WlTEMQNauUgMqutzxnmHcuubkMvRhTfT@autorack.proxy.rlwy.net:28353/railway", {
     logging: false,
     native: false,
     dialect: 'postgres',
@@ -20,6 +19,7 @@ const database = new Sequelize( "postgresql://postgres:WlTEMQNauUgMqutzxnmHcuubk
     },
 });
 
+// Definir los modelos
 Product_Model(database);
 User_Model(database);
 Category_Model(database);
@@ -27,16 +27,18 @@ SubCategory_Model(database);
 
 const { Producto, User, Categoria, SubCategoria } = database.models;
 
-Categoria.hasMany(Producto, { foreignKey: 'CategoriaId' });
-Producto.belongsTo(Categoria, { foreignKey: 'CategoriaId' });
+// Relacionar los modelos (muchos a muchos)
+Producto.belongsToMany(Categoria, { through: 'ProductoCategoria', foreignKey: 'ProductoId' });
+Categoria.belongsToMany(Producto, { through: 'ProductoCategoria', foreignKey: 'CategoriaId' });
 
-SubCategoria.hasMany(Producto, { foreignKey: 'SubCategoriaId' });
-Producto.belongsTo(SubCategoria, { foreignKey: 'SubCategoriaId' });
+Producto.belongsToMany(SubCategoria, { through: 'ProductoSubCategoria', foreignKey: 'ProductoId' });
+SubCategoria.belongsToMany(Producto, { through: 'ProductoSubCategoria', foreignKey: 'SubCategoriaId' });
 
 SubCategoria.belongsToMany(Categoria, { through: 'CategoriaSubCategoria' });
 Categoria.belongsToMany(SubCategoria, { through: 'CategoriaSubCategoria' });
 
-
-module.exports = { database, 
-    ...database.models,
+// Exportar la base de datos y modelos
+module.exports = { 
+    database, 
+    ...database.models 
 };

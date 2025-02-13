@@ -1,7 +1,7 @@
 const { Producto, Categoria, SubCategoria } = require('../../db');
 
 const postProducto = async (req, res) => {
-    const { nombre, imagen , descripción , color , codigo ,precio, favorito,CategoriaId, SubCategoriaId } = req.body;
+    const { nombre, imagen, descripción, codigo, precio, descuento, porcentaje_descuento, CategoriaId, SubCategoriaId } = req.body;
 
     try {
         // Validar categoría existente
@@ -19,15 +19,18 @@ const postProducto = async (req, res) => {
             });
         }
 
+        // Si el producto no tiene descuento, establecer porcentaje_descuento en null
+        const porcentajeDescuentoFinal = descuento ? porcentaje_descuento : null;
+
         // Crear el producto
         const producto = await Producto.create({
             nombre,
             imagen,
             descripción,
-            color,
             codigo,
             precio,
-            favorito,
+            descuento,
+            porcentaje_descuento: porcentajeDescuentoFinal,
             CategoriaId,
             SubCategoriaId,
         });

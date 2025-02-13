@@ -1,28 +1,35 @@
-const { SubCategoria } = require('../../db');
+const { SubCategoria, Categoria } = require('../../db');
 
 const postSubCategoria = async (req, res) => {
-    const { nombre } = req.body;
+    const { nombre, categorias } = req.body;
 
     try {
-        // Verificar si ya existe una subcategoría con el mismo nombre
-        const [subCategoria, created] = await SubCategoria.findOrCreate({
-            where: { nombre },
-        });
+        // Crear la nueva subcategoría
+        const nuevaSubCategoria = await SubCategoria.create({ nombre });
 
-        if (!created) {
-            return res.status(400).json({
-                message: `La subcategoría '${nombre}' ya existe.`
-            });
+        if (categorias && categorias.length > 0) {
+            // Buscar o crear cada categoría y obtener sus instancias
+            const categoriasCreadas = await Promise.all(
+                categorias.map(async (cat) => {
+                    const [categoria] = await Categoria.findOrCreate({
+                        where: { nombre: cat }, // Busca por nombre
+                    });
+                    return categoria; // Devuelve la instancia de Categoria
+                })
+            );
+
+            // Asociar las categorías a la nueva subcategoría
+            await nuevaSubCategoria.addCategoria(categoriasCreadas); // Nota el uso del plural
         }
 
         res.status(201).json({
-            message: 'Subcategoría creada con éxito',
-            subCategoria,
+            message: "SubCategoría creada exitosamente",
+            nuevaSubCategoria,
         });
     } catch (error) {
-        console.error('Error al crear la subcategoría:', error);
+        console.error("Error al crear la subcategoría:", error);
         res.status(500).json({ error: error.message });
     }
 };
 
-module.exports = {postSubCategoria};
+module.exports = { postSubCategoria };

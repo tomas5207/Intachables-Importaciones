@@ -1,8 +1,8 @@
-const {DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (dataBase) => {
     dataBase.define('Producto', {
-        id:{
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -11,13 +11,10 @@ module.exports = (dataBase) => {
             type: DataTypes.STRING
         },
         imagen: {
-            type: DataTypes.TEXT
+            type: DataTypes.ARRAY(DataTypes.TEXT) 
         },
         descripción: {
             type: DataTypes.TEXT
-        },
-        color:{
-            type: DataTypes.STRING
         },
         codigo: {
             type: DataTypes.STRING
@@ -25,10 +22,15 @@ module.exports = (dataBase) => {
         precio: {
             type: DataTypes.INTEGER
         },
-        favorito:{
-            type: DataTypes.BOOLEAN
+        descuento: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        porcentaje_descuento: {
+            type: DataTypes.INTEGER,  
+            allowNull: true
         }
     }, {
         timestamps: false
-    }); 
+    });
 };

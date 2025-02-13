@@ -1,34 +1,18 @@
-const { Categoria, SubCategoria } = require('../../db');
+const { Categoria } = require('../../db');
 
 const putCategoria = async (req, res) => {
   const { id } = req.params;
-  const { nombre, subcategorias } = req.body;
+  const { nombre } = req.body;
 
   try {
-    const categoria = await Categoria.findByPk(id);
+    const updatedCategoria = await Categoria.update(
+      { nombre },
+      { where: { id } }
+    );
 
-
-    if (nombre) {
-      categoria.nombre = nombre;
-      await categoria.save();
-    }
-
-    if (subcategorias && subcategorias.length > 0) {
-      const subCategoriasActualizadas = await Promise.all(
-        subcategorias.map(async (subcat) => {
-          const [subCategoria] = await SubCategoria.findOrCreate({
-            where: { nombre: subcat },
-          });
-          return subCategoria;
-        })
-      );
-
-      // Actualizar asociaciones
-      await categoria.setSubCategoria(subCategoriasActualizadas);
-    }
-
-    res.status(200).json({ message: "Categoría actualizada exitosamente", categoria });
+    res.json(updatedCategoria);
   } catch (error) {
+    console.error("Error al actualizar la categoría:", error);
     res.status(500).json({ error: error.message });
   }
 };
