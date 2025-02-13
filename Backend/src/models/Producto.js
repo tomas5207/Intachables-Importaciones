@@ -29,6 +29,10 @@ module.exports = (dataBase) => {
         porcentaje_descuento: {
             type: DataTypes.INTEGER,  
             allowNull: true
+        },
+        favorito: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     }, {
         timestamps: false

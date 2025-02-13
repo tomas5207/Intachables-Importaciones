@@ -2,7 +2,7 @@ const { Producto, Categoria, SubCategoria } = require('../../db');
 
 const putProducto = async (req, res) => {
     const { id } = req.params;
-    const { nombre, imagen, descripción, codigo, precio, descuento, porcentaje_descuento, CategoriaId, SubCategoriaId } = req.body;
+    const { nombre, imagen, descripción, codigo, precio, descuento, porcentaje_descuento, favorito,CategoriaId, SubCategoriaId } = req.body;
 
     try {
         const producto = await Producto.findByPk(id);
@@ -42,6 +42,7 @@ const putProducto = async (req, res) => {
             precio,
             descuento,
             porcentaje_descuento: porcentajeDescuentoFinal,
+            favorito,
             CategoriaId,
             SubCategoriaId,
         });
